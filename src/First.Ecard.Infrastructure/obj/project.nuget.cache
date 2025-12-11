@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dElrNc+QBgZSueB76XwBiMGS0Ba4LqOx5lTsyO8XqEacr4id/g3AE1PkpfyctR9MBSWNLpizJlnuoGm65qLhYg==",
+  "dgSpecHash": "/S94VR/5XLC0nl/F+onlPFjIF7mJzoFhBDSV/AJ5yCv8AW2DTqf2LCVQ+R+WltozzLbKC9zsVnhqF4ikIRevmQ==",
   "success": true,
   "projectFilePath": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Infrastructure/First.Ecard.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "/home/techno243/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/techno243/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/techno243/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
-    "/home/techno243/.nuget/packages/fluentvalidation.dependencyinjectionextensions/8.2.2/fluentvalidation.dependencyinjectionextensions.8.2.2.nupkg.sha512",
+    "/home/techno243/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.1/fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
     "/home/techno243/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/techno243/.nuget/packages/mediatr/8.0.0/mediatr.8.0.0.nupkg.sha512",
     "/home/techno243/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/8.0.0/mediatr.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",
@@ -62,16 +62,5 @@
     "/home/techno243/.nuget/packages/system.text.json/8.0.4/system.text.json.8.0.4.nupkg.sha512",
     "/home/techno243/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "First.Ecard.Application depends on FluentValidation.DependencyInjectionExtensions (>= 8.0.0) but FluentValidation.DependencyInjectionExtensions 8.0.0 was not found. An approximate best match of FluentValidation.DependencyInjectionExtensions 8.2.2 was resolved.",
-      "libraryId": "FluentValidation.DependencyInjectionExtensions",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

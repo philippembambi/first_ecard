@@ -21,7 +21,7 @@ namespace First.Ecard.Infrastructure
             });
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            //services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
             
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAgentRepository, AgentRepository>();

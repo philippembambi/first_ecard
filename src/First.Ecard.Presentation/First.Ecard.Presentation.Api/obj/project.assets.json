@@ -57,17 +57,21 @@
           }
         }
       },
-      "FluentValidation.DependencyInjectionExtensions/8.2.2": {
+      "FluentValidation.DependencyInjectionExtensions/12.1.1": {
         "type": "package",
         "dependencies": {
-          "FluentValidation": "8.2.2",
-          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
+          "FluentValidation": "12.1.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0"
         },
         "compile": {
-          "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
+          "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
+          "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "MediatR/8.0.0": {
@@ -690,7 +694,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "First.Ecard.Domain": "1.0.0",
           "FluentValidation": "12.1.1",
-          "FluentValidation.DependencyInjectionExtensions": "8.0.0",
+          "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "8.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0"
         },
@@ -809,17 +813,19 @@
         "lib/net8.0/FluentValidation.xml"
       ]
     },
-    "FluentValidation.DependencyInjectionExtensions/8.2.2": {
-      "sha512": "WGR6uZVCnVZscR3UZS8eIf2D19ETySMAq48e5qdUTCktGEYMg6FaFw7H3cFoeVM1ga/EV6aoZVa1DHlIBtJ+sg==",
+    "FluentValidation.DependencyInjectionExtensions/12.1.1": {
+      "sha512": "D0VXh4dtjjX2aQizuaa0g6R8X3U1JaVqJPfGCvLwZX9t/O2h7tkpbitbadQMfwcgSPdDbI2vDxuwRMv/Uf9dHA==",
       "type": "package",
-      "path": "fluentvalidation.dependencyinjectionextensions/8.2.2",
+      "path": "fluentvalidation.dependencyinjectionextensions/12.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fluentvalidation.dependencyinjectionextensions.8.2.2.nupkg.sha512",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
         "fluentvalidation.dependencyinjectionextensions.nuspec",
-        "lib/netstandard2.0/FluentValidation.AspNetCore.xml",
-        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll"
+        "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/net8.0/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
     "MediatR/8.0.0": {
@@ -2204,17 +2210,5 @@
         "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "First.Ecard.Application depends on FluentValidation.DependencyInjectionExtensions (>= 8.0.0) but FluentValidation.DependencyInjectionExtensions 8.0.0 was not found. An approximate best match of FluentValidation.DependencyInjectionExtensions 8.2.2 was resolved.",
-      "libraryId": "FluentValidation.DependencyInjectionExtensions",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

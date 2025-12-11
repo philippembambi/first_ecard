@@ -1,5 +1,6 @@
 using First.Ecard.Application;
 using First.Ecard.Infrastructure;
+using First.Ecard.Presentation.Api.Middlewares;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 );
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

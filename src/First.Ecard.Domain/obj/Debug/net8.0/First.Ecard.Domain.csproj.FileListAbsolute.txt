@@ -9,3 +9,4 @@
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/refint/First.Ecard.Domain.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.pdb
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/ref/First.Ecard.Domain.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.sourcelink.json

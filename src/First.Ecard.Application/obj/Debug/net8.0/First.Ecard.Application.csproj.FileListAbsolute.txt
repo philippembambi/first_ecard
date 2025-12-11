@@ -13,3 +13,4 @@
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/refint/First.Ecard.Application.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.pdb
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/ref/First.Ecard.Application.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.sourcelink.json

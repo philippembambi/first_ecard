@@ -22,17 +22,18 @@ namespace First.Ecard.Application.Features.Agents.Commands
                 .NotEmpty()
                 .EmailAddress()
                 .MaximumLength(255);
-
+                
             RuleFor(x => x.PasswordHash)
                 .NotEmpty()
-                .MinimumLength(6)
-                .WithMessage("Le mot de passe doit avoir au moins 6 caractères.");
+                .MinimumLength(6);
 
             RuleFor(x => x.Gender)
-                .IsInEnum();
+                .IsInEnum()
+                .WithMessage("Inccorect gender");
 
             RuleFor(x => x.Role)
-                .IsInEnum();
+                .IsInEnum()
+                .WithMessage("Inccorect role");
         }
     }
 }

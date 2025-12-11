@@ -49,3 +49,4 @@
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/First.Ecard.Domain.pdb
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/BCrypt.Net-Next.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/FluentValidation.DependencyInjectionExtensions.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/obj/Debug/net8.0/First.Ecard.Presentation.Api.sourcelink.json

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qz1WM8Bz7DDacTYQFz1QV4Z7ehA/PQVwuAYeobj8tiSXk56QoGQMroK99PcSHnce/F5cWxaNXupHDMy51zhADQ==",
+  "dgSpecHash": "Pqz1lp+1VBYuE/goBaiVy2OSfhX70v/pZt75Unh+4iUqzWgX/MQMZZqgkVW2d58cg6G1LbpBgBN9VkYLXWuyxw==",
   "success": true,
   "projectFilePath": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/First.Ecard.Presentation.Api.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "/home/techno243/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/techno243/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/techno243/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
-    "/home/techno243/.nuget/packages/fluentvalidation.dependencyinjectionextensions/8.2.2/fluentvalidation.dependencyinjectionextensions.8.2.2.nupkg.sha512",
+    "/home/techno243/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.1/fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
     "/home/techno243/.nuget/packages/mediatr/8.0.0/mediatr.8.0.0.nupkg.sha512",
     "/home/techno243/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/8.0.0/mediatr.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",
     "/home/techno243/.nuget/packages/microsoft.aspnetcore.openapi/8.0.21/microsoft.aspnetcore.openapi.8.0.21.nupkg.sha512",
@@ -46,16 +46,5 @@
     "/home/techno243/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/home/techno243/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "First.Ecard.Application depends on FluentValidation.DependencyInjectionExtensions (>= 8.0.0) but FluentValidation.DependencyInjectionExtensions 8.0.0 was not found. An approximate best match of FluentValidation.DependencyInjectionExtensions 8.2.2 was resolved.",
-      "libraryId": "FluentValidation.DependencyInjectionExtensions",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -17,3 +17,4 @@
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Infrastructure/obj/Debug/net8.0/First.Ecard.Infrastructure.pdb
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Infrastructure/obj/Debug/net8.0/First.Ecard.Infrastructure.genruntimeconfig.cache
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Infrastructure/obj/Debug/net8.0/ref/First.Ecard.Infrastructure.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Infrastructure/obj/Debug/net8.0/First.Ecard.Infrastructure.sourcelink.json

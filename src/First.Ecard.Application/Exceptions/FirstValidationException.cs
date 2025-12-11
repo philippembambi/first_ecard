@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace First.Ecard.Application.Exceptions
+{
+    public class FirstValidationException : Exception
+    {
+        public List<string> Errors {get;}
+
+        public FirstValidationException(IEnumerable<string> errors)
+        {
+            Errors = errors.ToList();
+        }
+    }
+}

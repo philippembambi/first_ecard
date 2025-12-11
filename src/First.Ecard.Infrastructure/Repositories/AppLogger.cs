@@ -7,10 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace First.Ecard.Infrastructure.Repositories
 {
-    public class LoggerAdapter<T> : IAppLogger<T>
+    public class AppLogger<T> : IAppLogger<T>
     {
         private readonly ILogger<T> _logger;
-        public LoggerAdapter(ILoggerFactory loggerFactory)
+        public AppLogger(ILoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger<T>();
         }
