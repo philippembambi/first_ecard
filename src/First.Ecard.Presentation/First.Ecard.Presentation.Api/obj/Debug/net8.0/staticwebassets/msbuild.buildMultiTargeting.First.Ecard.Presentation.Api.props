@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/First.Ecard.Presentation.Api.props" />
+</Project>

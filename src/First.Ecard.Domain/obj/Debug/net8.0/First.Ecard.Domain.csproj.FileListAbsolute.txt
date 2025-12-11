@@ -1,0 +1,11 @@
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/bin/Debug/net8.0/First.Ecard.Domain.deps.json
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/bin/Debug/net8.0/First.Ecard.Domain.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/bin/Debug/net8.0/First.Ecard.Domain.pdb
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.AssemblyInfoInputs.cache
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.AssemblyInfo.cs
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.csproj.CoreCompileInputs.cache
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/refint/First.Ecard.Domain.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/First.Ecard.Domain.pdb
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Domain/obj/Debug/net8.0/ref/First.Ecard.Domain.dll

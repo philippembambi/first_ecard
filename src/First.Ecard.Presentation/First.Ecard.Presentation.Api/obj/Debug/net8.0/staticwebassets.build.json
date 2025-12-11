@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "QmW0rf4qVrhBkrNfj7Ai7Drj3ZisRjKrCpf8qas7Bgw=",
+  "Source": "First.Ecard.Presentation.Api",
+  "BasePath": "_content/First.Ecard.Presentation.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

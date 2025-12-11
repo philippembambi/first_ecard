@@ -1,0 +1,15 @@
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/bin/Debug/net8.0/First.Ecard.Application.deps.json
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/bin/Debug/net8.0/First.Ecard.Application.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/bin/Debug/net8.0/First.Ecard.Application.pdb
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/bin/Debug/net8.0/First.Ecard.Domain.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/bin/Debug/net8.0/First.Ecard.Domain.pdb
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.csproj.AssemblyReference.cache
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.AssemblyInfoInputs.cache
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.AssemblyInfo.cs
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.csproj.CoreCompileInputs.cache
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.csproj.CopyComplete
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/refint/First.Ecard.Application.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/First.Ecard.Application.pdb
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Application/obj/Debug/net8.0/ref/First.Ecard.Application.dll

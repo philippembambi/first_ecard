@@ -1,0 +1,53 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "First.Ecard.Domain", "src\First.Ecard.Domain\First.Ecard.Domain.csproj", "{C0793778-C5C6-1662-725B-25ACAB61CAAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "First.Ecard.Application", "src\First.Ecard.Application\First.Ecard.Application.csproj", "{26904234-B09D-452C-BBD3-6BD4312B2EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "First.Ecard.Infrastructure", "src\First.Ecard.Infrastructure\First.Ecard.Infrastructure.csproj", "{2DDCF81E-928A-4C26-9E06-82FFB7E3395F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "First.Ecard.Presentation", "First.Ecard.Presentation", "{86BF8369-24B3-439C-BE04-4677ABD0CAEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "First.Ecard.Presentation.Api", "src\First.Ecard.Presentation\First.Ecard.Presentation.Api\First.Ecard.Presentation.Api.csproj", "{95EFEE66-76D6-4B7C-9B00-DF44013487E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0793778-C5C6-1662-725B-25ACAB61CAAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0793778-C5C6-1662-725B-25ACAB61CAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0793778-C5C6-1662-725B-25ACAB61CAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0793778-C5C6-1662-725B-25ACAB61CAAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26904234-B09D-452C-BBD3-6BD4312B2EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26904234-B09D-452C-BBD3-6BD4312B2EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26904234-B09D-452C-BBD3-6BD4312B2EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26904234-B09D-452C-BBD3-6BD4312B2EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDCF81E-928A-4C26-9E06-82FFB7E3395F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDCF81E-928A-4C26-9E06-82FFB7E3395F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDCF81E-928A-4C26-9E06-82FFB7E3395F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDCF81E-928A-4C26-9E06-82FFB7E3395F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95EFEE66-76D6-4B7C-9B00-DF44013487E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EFEE66-76D6-4B7C-9B00-DF44013487E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EFEE66-76D6-4B7C-9B00-DF44013487E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EFEE66-76D6-4B7C-9B00-DF44013487E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C0793778-C5C6-1662-725B-25ACAB61CAAB} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{26904234-B09D-452C-BBD3-6BD4312B2EF9} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{2DDCF81E-928A-4C26-9E06-82FFB7E3395F} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{86BF8369-24B3-439C-BE04-4677ABD0CAEA} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{95EFEE66-76D6-4B7C-9B00-DF44013487E7} = {86BF8369-24B3-439C-BE04-4677ABD0CAEA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E749883-416D-42D5-A946-15AC3F8BE3AD}
+	EndGlobalSection
+EndGlobal
