@@ -34,6 +34,8 @@ dotnet add package FluentValidation
 - dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.7
 - dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 8.0.4
 - dotnet add package BCrypt.Net-Next
+- dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.0
+- dotnet add package System.IdentityModel.Tokens.Jwt
 
 ### Api Packages
 - dotnet add package Microsoft.EntityFrameworkCore.Tools

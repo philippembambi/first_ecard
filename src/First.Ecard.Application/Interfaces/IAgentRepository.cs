@@ -8,6 +8,5 @@ namespace First.Ecard.Application.Interfaces
 {
     public interface IAgentRepository : IGenericRepository<Agent>
     {
-        
     }
 }

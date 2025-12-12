@@ -31,8 +31,8 @@ namespace First.Ecard.Presentation.Api.Middlewares
                 
                 var response = new
                 {
-                    Message = "Validation failed",
-                    Errors = ex.Errors
+                    Message = ex.Message,
+                    Errors = ex.Errors,
                 };
 
                 await httpContext.Response.WriteAsJsonAsync(response);
@@ -43,7 +43,7 @@ namespace First.Ecard.Presentation.Api.Middlewares
                 httpContext.Response.ContentType = "application/json";
                 httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
-                var response = new {Message = "An unexpected error occured"};
+                var response = new {Message = "An unexpected error occured", Error = ex.Message};
                 await httpContext.Response.WriteAsJsonAsync(response);
             }
         }

@@ -50,3 +50,11 @@
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/BCrypt.Net-Next.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/FluentValidation.DependencyInjectionExtensions.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/obj/Debug/net8.0/First.Ecard.Presentation.Api.sourcelink.json
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll

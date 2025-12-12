@@ -37,6 +37,11 @@ namespace First.Ecard.Infrastructure.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
+        public async Task<Agent> GetByEmailAsync(string email)
+        {
+            return await _context.Set<Agent>().FirstOrDefaultAsync(x => x.Email == email);
+        }
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
