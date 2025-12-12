@@ -8,6 +8,7 @@ using First.Ecard.Domain.Entities;
 using First.Ecard.Application.Interfaces;
 using AutoMapper;
 using First.Ecard.Application.Features.Accounts.Commands;
+using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Application.Features.Accounts.Handlers
 {
@@ -24,7 +25,14 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
 
         public async Task<AccountDto> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
-            var account = new Account(request.AccountType, request.Currency, request.ClientId);
+            var account = _mapper.Map<Account>(request);
+            
+            account.CreatedAt = DateTime.UtcNow;
+            account.Balance = 0.0m;
+            account.Status = AccountStatus.Active;
+            account.AccountNumber = Account.GenerateAccountNumber();
+            account.CreatedAt = DateTime.UtcNow;
+
             await _accountRepository.CreateAsync(account);
             return _mapper.Map<AccountDto>(account);
         }

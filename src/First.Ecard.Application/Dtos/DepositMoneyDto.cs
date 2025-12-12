@@ -6,11 +6,9 @@ using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Application.Dtos
 {
-    public class AccountUpdateDto
+    public class DepositMoneyDto
     {
         public int AccountId {get;set;}
-        public AccountTypeEnum ? AccountType { get; set; }
         public decimal Balance { get; set; }
-        public AccountStatus ? Status { get; set; }
     }
 }

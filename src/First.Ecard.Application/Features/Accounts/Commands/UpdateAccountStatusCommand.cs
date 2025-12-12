@@ -8,10 +8,13 @@ using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Application.Features.Accounts.Commands
 {
-    public class UpdateAccountCommand : IRequest<AccountDto>
+    public class UpdateAccountStatusCommand : IRequest<AccountDto>
     {
-        public AccountTypeEnum AccountType { get; set; }
-        public decimal Balance { get; set; }
-        public AccountStatus Status { get; set; }
+        public AccountUpdateDto Dto {get;}
+
+        public UpdateAccountStatusCommand(AccountUpdateDto dto)
+        {
+            Dto = dto;
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace First.Ecard.Application.Features.Accounts.Commands
 {
     public class CreateAccountCommand : IRequest<AccountDto>
     {
+        public int AccountId {get;set;}
         public AccountTypeEnum AccountType { get; set; }
         public CurrencyType Currency { get; set; }
         public int ClientId { get; set; }
