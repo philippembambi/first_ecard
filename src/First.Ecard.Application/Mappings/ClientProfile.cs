@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using First.Ecard.Application.Dtos;
+using First.Ecard.Application.Features.Clients.Commands;
 using First.Ecard.Domain.Entities;
 
 namespace First.Ecard.Application.Mappings
@@ -13,6 +14,7 @@ namespace First.Ecard.Application.Mappings
         public ClientProfile()
         {
             CreateMap<ClientCreateDto, Client>();
+            CreateMap<CreateClientCommand, Client>();
             CreateMap<Client, ClientDto>();
             CreateMap<ClientUpdateDto, Client>();
         }

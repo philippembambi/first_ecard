@@ -39,17 +39,11 @@ namespace First.Ecard.Infrastructure.Persistence.Configurations
             builder.Property(a => a.Address)
                 .HasMaxLength(255);
             
-            builder.Property(a => a.DateOfBirth)
-                .HasMaxLength(10);
-            
             builder.Property(a => a.Age)
                 .HasMaxLength(3);
 
             builder.Property(a => a.IDCardType)
                 .IsRequired();
-
-            builder.Property(a => a.PasswordHash)
-                .HasMaxLength(255);
 
             builder.Property(a => a.IDCardNumber)
                 .IsRequired()

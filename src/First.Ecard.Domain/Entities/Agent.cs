@@ -9,6 +9,7 @@ namespace First.Ecard.Domain.Entities
 {
     public class Agent : User
     {
+        public string PasswordHash { get; set; } = string.Empty;
         public AgentRole Role { get; set; }
         public string MatriculationNumber { get; set; } = string.Empty;
         public DateTime LastLogin { get; set; }
