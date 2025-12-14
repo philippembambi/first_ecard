@@ -27,7 +27,6 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
         {
             var account = _mapper.Map<Account>(request);
             
-            account.CreatedAt = DateTime.UtcNow;
             account.Balance = 0.0m;
             account.Status = AccountStatus.Active;
             account.AccountNumber = Account.GenerateAccountNumber();
