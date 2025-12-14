@@ -57,10 +57,17 @@ namespace First.Ecard.Presentation.Api.Controllers
             return NoContent();
         }
 
-        [HttpPost("{id:int}/{amount:decimal}")]
+        [HttpPut("{id:int}/deposit/{amount:decimal}")]
         public async Task<IActionResult> MakeDeposit(int id, decimal amount)
         {
-            //await _mediator.Send(new DepositMoneyCommand(id));
+            await _mediator.Send(new DepositMoneyCommand(id, amount));
+            return NoContent();
+        }
+
+        [HttpPut("{id:int}/withdraw/{amount:decimal}")]
+        public async Task<IActionResult> MakeWithdraw(int id, decimal amount)
+        {
+            await _mediator.Send(new WithdrawMoneyCommand(id, amount));
             return NoContent();
         }
     }

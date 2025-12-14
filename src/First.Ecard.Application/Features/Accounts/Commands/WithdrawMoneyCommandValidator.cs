@@ -6,14 +6,14 @@ using FluentValidation;
 
 namespace First.Ecard.Application.Features.Accounts.Commands
 {
-    public class DepositMoneyCommandValidator : AbstractValidator<DepositMoneyCommand>
+    public class WithdrawMoneyCommandValidator : AbstractValidator<WithdrawMoneyCommand>
     {
-        public DepositMoneyCommandValidator()
+        public WithdrawMoneyCommandValidator()
         {
             RuleFor(x => x.AccountId)
                 .NotEmpty()
                 .NotNull();
-
+            
             RuleFor(x => x.Balance)
                 .NotEmpty()
                 .NotNull()

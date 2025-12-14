@@ -26,7 +26,7 @@ namespace First.Ecard.Infrastructure.Repositories
             return entity;
         }
 
-        public async Task Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
