@@ -12,7 +12,7 @@ namespace First.Ecard.Domain.Common
         public string LastName { get; set; } = string.Empty;
         public GenderType Gender { get; set; }
         public int? Age { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
         public string? Nationality { get; set; } = string.Empty;
         public string? Address { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;

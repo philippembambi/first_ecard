@@ -14,16 +14,8 @@ namespace First.Ecard.Application.Features.Cards.Commands
             RuleFor(x => x.AccountId)
                 .NotEmpty()
                 .NotNull();
-            RuleFor(x => x.CardNumber)
-                .NotNull()
-                .NotEmpty()
-                .Length(16);
             RuleFor(x => x.CardType)
                 .IsInEnum();
-            RuleFor(x => x.CVV)
-                .NotEmpty()
-                .NotNull()
-                .Length(3);
             RuleFor(x => x.ExpiryDate)
                 .NotEmpty()
                 .NotNull()

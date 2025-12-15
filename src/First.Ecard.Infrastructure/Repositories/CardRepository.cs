@@ -16,6 +16,12 @@ namespace First.Ecard.Infrastructure.Repositories
             
         }
 
+        public async Task<Card?> GetByCardNumberAsync(string cardNumber)
+        {
+            return await _context.Cards
+                    .FirstOrDefaultAsync(x => x.CardNumber == cardNumber);
+        }
+
         public async Task<List<Card>> GetCardsByAccountIdAsync(int accountId)
         {
             return await _context.Cards

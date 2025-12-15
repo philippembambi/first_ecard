@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using First.Ecard.Application.Dtos;
 using MediatR;
 
-namespace First.Ecard.Application.Features.Cards.Handlers
+namespace First.Ecard.Application.Features.Cards.Queries
 {
-    public record GetAllCardQuery() : IRequest<List<CardDto>>;
+    public record GetAllCardByAccountIdQuery(int AccountId) : IRequest<List<CardDto>>;
 }

@@ -8,7 +8,7 @@ using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Application.Features.Accounts.Commands
 {
-    public class UpdateAccountStatusCommand : IRequest<AccountDto>
+    public class UpdateAccountStatusCommand : IRequest<AccountUpdateDto>
     {
         public AccountUpdateDto Dto {get;}
 

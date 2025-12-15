@@ -24,17 +24,16 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
 
         public async Task<DepositMoneyDto> Handle(DepositMoneyCommand request, CancellationToken cancellationToken)
         {
-            var account = await _accountRepository.GetByIdAsync(request.AccountId) ?? throw new FirstValidationException("Not found", new[] {"Account not found"});
+            var account = await _accountRepository.GetByIdAsync(request.Dto.AccountId) ?? throw new FirstValidationException("Not found", new[] {"Account not found"});
             
-            if(request.Balance <= 0)
+            if(request.Dto.Balance <= 0)
                 throw new FirstValidationException("Invalid Amount", new[] {"Amount must be > 0"});
             
-            account.Balance += request.Balance;
+            account.Balance += request.Dto.Balance;
             account.CreatedAt = DateTime.UtcNow;
 
             await _accountRepository.UpdateAsync(account);
-            
-            return _mapper.Map<DepositMoneyDto>(account);
+            return request.Dto;
         }
     }
 }

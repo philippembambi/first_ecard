@@ -15,17 +15,26 @@ namespace First.Ecard.Infrastructure.Repositories
         {
             
         }
+
+        public async Task<Account?> GetByAccountNumberAsync(string accountNumber)
+        {
+            return await _context.Accounts
+                .FirstOrDefaultAsync(x => x.AccountNumber == accountNumber);
+        }
+
+        public async Task<List<Account>> GetByClientIdAsync(int clientId)
+        {
+            return await _context.Accounts
+                .Where(x => x.Client != null && x.Client.Id == clientId)
+                .ToListAsync();
+        }
+
         public async Task<IReadOnlyList<Account>> GetAllWithClientAsync()
         {
             return await _context.Accounts
                 .Include(a => a.Client)
                 .Include(a => a.Cards)
                 .ToListAsync();
-        }
-
-        public Task<Account?> GetByAccountNumberAsync(string accountNumber)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<Account?> GetByIdWithDetailsAsync(int id)

@@ -10,11 +10,11 @@ namespace First.Ecard.Application.Features.Accounts.Commands
     {
         public WithdrawMoneyCommandValidator()
         {
-            RuleFor(x => x.AccountId)
+            RuleFor(x => x.Dto.AccountId)
                 .NotEmpty()
                 .NotNull();
             
-            RuleFor(x => x.Balance)
+            RuleFor(x => x.Dto.Balance)
                 .NotEmpty()
                 .NotNull()
                 .GreaterThan(0).WithMessage("Amount must be greater than 0");

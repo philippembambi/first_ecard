@@ -12,7 +12,7 @@ using MediatR;
 
 namespace First.Ecard.Application.Features.Accounts.Handlers
 {
-    public class DeleteAccountCommandHandler : IRequestHandler<CreateAccountCommand, AccountDto>
+    public class DeleteAccountCommandHandler : IRequestHandler<DeleteAccountCommand, AccountDto>
     {
         private readonly IGenericRepository<Account> _accountRepository;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
             _mapper = mapper;
         }
 
-        public async Task<AccountDto> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
+        public async Task<AccountDto> Handle(DeleteAccountCommand request, CancellationToken cancellationToken)
         {
             var account = await _accountRepository.GetByIdAsync(request.AccountId) ?? throw new FirstValidationException("Not found", new[] {"Account does not exist"});
             await _accountRepository.DeleteAsync(account);

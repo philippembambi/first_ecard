@@ -9,8 +9,6 @@ namespace First.Ecard.Application.Dtos
     public class AccountUpdateDto
     {
         public int AccountId {get;set;}
-        public AccountTypeEnum ? AccountType { get; set; }
-        public decimal Balance { get; set; }
         public AccountStatus ? Status { get; set; }
     }
 }

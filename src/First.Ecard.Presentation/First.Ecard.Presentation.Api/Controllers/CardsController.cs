@@ -9,6 +9,7 @@ using First.Ecard.Application.Features.Accounts.Queries;
 using First.Ecard.Application.Dtos;
 using First.Ecard.Application.Features.Cards.Commands;
 using First.Ecard.Application.Features.Cards.Handlers;
+using First.Ecard.Application.Features.Cards.Queries;
 
 namespace First.Ecard.Presentation.Api.Controllers
 {
@@ -41,6 +42,20 @@ namespace First.Ecard.Presentation.Api.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _mediator.Send(new GetCardByIdQuery(id));
+            return Ok(result);
+        }
+
+        [HttpGet("{card_number}")]
+        public async Task<IActionResult> GetByCardNumber(string card_number)
+        {
+            var result = await _mediator.Send(new GetCardByCardNumberQuery(card_number));
+            return Ok(result);
+        }
+
+        [HttpGet("account/{account_id:int}")]
+        public async Task<IActionResult> GetByAccountId(int account_id)
+        {
+            var result = await _mediator.Send(new GetAllCardByAccountIdQuery(account_id));
             return Ok(result);
         }
     }

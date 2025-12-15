@@ -13,13 +13,17 @@ namespace First.Ecard.Domain.Entities
         public string IDCardNumber { get; set; } = string.Empty;
 
         public ICollection<Account> Accounts { get; set; } = [];
-        public static int CalculateAge(DateTime dateOfBirth)
+        public static int CalculateAge(DateOnly dateOfBirth)
         {
-            var today = DateTime.UtcNow;
+            var today = DateOnly.FromDateTime(DateTime.UtcNow);
             var age = today.Year - dateOfBirth.Year;
 
-            if (dateOfBirth.Date > today.AddYears(-age))
+            // Si l'anniversaire n'est pas encore passé cette année
+            if (dateOfBirth.AddYears(age) > today)
+            {
                 age--;
+            }
+
             return age;
         }
     }

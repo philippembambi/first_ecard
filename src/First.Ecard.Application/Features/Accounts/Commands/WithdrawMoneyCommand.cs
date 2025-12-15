@@ -8,5 +8,13 @@ using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Application.Features.Accounts.Commands
 {
-    public record WithdrawMoneyCommand(int AccountId, decimal Balance) : IRequest<WithdrawMoneyDto>;
+    public class WithdrawMoneyCommand : IRequest<WithdrawMoneyDto>
+    {
+        public WithdrawMoneyDto Dto {get;}
+
+        public WithdrawMoneyCommand(WithdrawMoneyDto dto)
+        {
+            Dto = dto;
+        }
+    }
 }

@@ -7,5 +7,13 @@ using MediatR;
 
 namespace First.Ecard.Application.Features.Accounts.Commands
 {
-    public record DepositMoneyCommand(int AccountId, decimal Balance) : IRequest<DepositMoneyDto>;
+    public class DepositMoneyCommand : IRequest<DepositMoneyDto>
+    {
+        public DepositMoneyDto Dto {get;}
+
+        public DepositMoneyCommand(DepositMoneyDto dto)
+        {
+            Dto = dto;
+        }
+    }
 }

@@ -24,17 +24,16 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
 
         public async Task<WithdrawMoneyDto> Handle(WithdrawMoneyCommand request, CancellationToken cancellationToken)
         {
-            var account = await _accountRepository.GetByIdAsync(request.AccountId) ?? throw new FirstValidationException("Not found", new[] { "Account not found" });
+            var account = await _accountRepository.GetByIdAsync(request.Dto.AccountId) ?? throw new FirstValidationException("Not found", new[] { "Account not found" });
 
-            if (request.Balance > account.Balance)
-                throw new FirstValidationException("Invalid Amount", new[] { "Withdraw amount greater that Balance" });
+            if (request.Dto.Balance > account.Balance)
+                throw new FirstValidationException("Invalid Amount", new[] { "Withdraw amount greater than Balance" });
 
-            account.Balance -= request.Balance;
+            account.Balance -= request.Dto.Balance;
             account.CreatedAt = DateTime.UtcNow;
 
             await _accountRepository.UpdateAsync(account);
-
-            return _mapper.Map<WithdrawMoneyDto>(account);
+            return request.Dto;
         }
     }
 }

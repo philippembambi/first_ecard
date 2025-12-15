@@ -14,7 +14,7 @@ namespace First.Ecard.Application.Dtos
         public string? LastName { get; set; }
         public GenderType Gender { get; set; }
         public int Age { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
         public string? Nationality { get; set; }
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }

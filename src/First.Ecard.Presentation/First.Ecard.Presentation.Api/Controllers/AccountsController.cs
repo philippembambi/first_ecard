@@ -42,33 +42,46 @@ namespace First.Ecard.Presentation.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, AccountUpdateDto accountUpdateDto)
+        [HttpPut("update_status")]
+        public async Task<IActionResult> Update(AccountUpdateDto accountUpdateDto)
         {
-            accountUpdateDto.AccountId = id;
             var result = await _mediator.Send(new UpdateAccountStatusCommand(accountUpdateDto));
             return Ok(result);
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("delete/{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteAccountCommand(id));
             return NoContent();
         }
 
-        [HttpPut("{id:int}/deposit/{amount:decimal}")]
-        public async Task<IActionResult> MakeDeposit(int id, decimal amount)
+        [HttpPut("deposit")]
+        public async Task<IActionResult> MakeDeposit(DepositMoneyDto depositMoneyDto)
         {
-            await _mediator.Send(new DepositMoneyCommand(id, amount));
-            return NoContent();
+            var result = await _mediator.Send(new DepositMoneyCommand(depositMoneyDto));
+            return Ok(result);
         }
 
-        [HttpPut("{id:int}/withdraw/{amount:decimal}")]
-        public async Task<IActionResult> MakeWithdraw(int id, decimal amount)
+        [HttpPut("withdraw")]
+        public async Task<IActionResult> MakeWithdraw(WithdrawMoneyDto withdrawMoneyDto)
         {
-            await _mediator.Send(new WithdrawMoneyCommand(id, amount));
-            return NoContent();
+            var result = await _mediator.Send(new WithdrawMoneyCommand(withdrawMoneyDto));
+            return Ok(result);
+        }
+
+        [HttpGet("client/{client_id:int}")]
+        public async Task<IActionResult> GetAllByClientId(int client_id)
+        {
+            var result = await _mediator.Send(new GetAllAccountByClientIdQuery(client_id));
+            return Ok(result);
+        }
+
+        [HttpGet("{account_number}")]
+        public async Task<IActionResult> GetByAccountNumber(string account_number)
+        {
+            var result = await _mediator.Send(new GetAccountByAccountNumberQuery(account_number));
+            return Ok(result);
         }
     }
 }
