@@ -47,7 +47,8 @@ dotnet add package FluentValidation
 ### 
 - dotnet ef migrations add RenamePasswordField -o Migrations
 - dotnet ef migrations add RenamePasswordToPasswordHash -o Migrations
-dotnet ef migrations add addRoleStringConversion -o Migrations
+- dotnet ef migrations add addRoleStringConversion -o Migrations
+- dotnet ef migrations add setDateOfBithToDateOnly -o Migrations
 
 -- sudo -u postgres psql
 --create database first_e_card;
