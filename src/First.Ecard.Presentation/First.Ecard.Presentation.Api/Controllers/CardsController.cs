@@ -58,5 +58,12 @@ namespace First.Ecard.Presentation.Api.Controllers
             var result = await _mediator.Send(new GetAllCardByAccountIdQuery(account_id));
             return Ok(result);
         }
+
+        [HttpGet("get_update_cards")]
+        public async Task<IActionResult> GetUpdateCards()
+        {
+            var result = await _mediator.Send(new GetAllUpdateCards());
+            return Ok(result);
+        }
     }
 }

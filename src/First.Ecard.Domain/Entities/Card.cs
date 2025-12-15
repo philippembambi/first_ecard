@@ -16,7 +16,6 @@ namespace First.Ecard.Domain.Entities
         public DateTime ExpiryDate { get; set; }
         public int AccountId { get; set; }
         public Account? Account { get; set; }
-        public bool IsUpdatedCard() => ExpiryDate >= DateTime.UtcNow;
         public static string GenerateCardNumber()
         {
             var random = new Random();

@@ -9,6 +9,7 @@ namespace First.Ecard.Application.Interfaces
     public interface ICardRepository : IGenericRepository<Card>
     {
         Task<List<Card>> GetCardsByAccountIdAsync(int accountId);
+        Task<List<Card>> GetUpdateCardsAsync();
         Task<Card?> GetByCardNumberAsync(string cardNumber);
     }
 }

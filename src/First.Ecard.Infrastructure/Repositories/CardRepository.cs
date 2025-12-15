@@ -13,7 +13,7 @@ namespace First.Ecard.Infrastructure.Repositories
     {
         public CardRepository(FirstDbContext context) : base(context)
         {
-            
+
         }
 
         public async Task<Card?> GetByCardNumberAsync(string cardNumber)
@@ -26,6 +26,13 @@ namespace First.Ecard.Infrastructure.Repositories
         {
             return await _context.Cards
                 .Where(c => c.AccountId == accountId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Card>> GetUpdateCardsAsync()
+        {
+            return await _context.Cards
+                .Where(c => c.ExpiryDate > DateTime.UtcNow)
                 .ToListAsync();
         }
     }
