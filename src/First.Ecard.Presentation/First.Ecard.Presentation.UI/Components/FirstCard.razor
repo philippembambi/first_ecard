@@ -1,0 +1,37 @@
+﻿<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">@title</p>
+                    <h5 class="font-weight-bolder">
+                      @value
+                    </h5>
+                    <p class="mb-0">
+                      <span class="text-success text-sm font-weight-bolder">@growth</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="@iconShape">
+                    <i class="@icon" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+@code {
+    [Parameter]
+    public string? value { get; set; }
+    [Parameter]
+    public string? title { get; set; }
+    [Parameter]
+    public string? growth { get; set; }
+    [Parameter]
+    public string? icon { get; set; }
+    [Parameter]
+    public string? iconShape { get; set; }
+}

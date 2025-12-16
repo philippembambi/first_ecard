@@ -1,7 +1,38 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>FirstBank RDC</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="container-fluid py-4">
+      <div class="row">
+         <FirstCard 
+            value="200"
+            title="Total Transactions"
+            growth="+3%"
+            icon="ni ni-world text-lg opacity-10"
+            iconShape="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle"
+         />
+         <FirstCard 
+            value="2700"
+            title="Clients"
+            growth="+6%"
+            icon="ni ni-world text-lg opacity-10"
+            iconShape="icon icon-shape bg-gradient-primary shadow-danger text-center rounded-circle"
+         />
+         <FirstCard 
+            value="2500"
+            title="Comptes"
+            growth="+3% since last week"
+            icon="ni ni-world text-lg opacity-10"
+            iconShape="icon icon-shape bg-gradient-success shadow-danger text-center rounded-circle"
+         />
+        <FirstCard 
+            value="200"
+            title="Users"
+            growth="+2%"
+            icon="ni ni-world text-lg opacity-10"
+            iconShape="icon icon-shape bg-gradient-warning shadow-danger text-center rounded-circle"
+         />
+      </div>
 
-Welcome to your new app.
+      <TransactionTable />
+</div>

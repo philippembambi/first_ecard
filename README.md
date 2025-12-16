@@ -11,6 +11,7 @@ mkdir First.Ecard.Presentation
 - dotnet sln First.Ecard.sln add src/First.Ecard.Application
 - dotnet sln First.Ecard.sln add src/First.Ecard.Infrastructure
 - dotnet sln First.Ecard.sln add src/First.Ecard.Presentation/First.Ecard.Presentation.Api
+- dotnet sln First.Ecard.sln add src/First.Ecard.Presentation/First.Ecard.Presentation.UI
 
 ### Add Project References
 - dotnet add src/First.Ecard.Application/First.Ecard.Application.csproj reference src/First.Ecard.Domain/First.Ecard.Domain.csproj

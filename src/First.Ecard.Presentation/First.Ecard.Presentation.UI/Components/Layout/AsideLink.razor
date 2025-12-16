@@ -1,0 +1,17 @@
+﻿<li class="nav-item">
+<NavLink class="nav-link" href="@refLink" Match="NavLinkMatch.All">
+    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+        <i class="@icon"></i>
+    </div>
+        <span class="nav-link-text ms-1">@text</span>
+</NavLink>
+</li>
+    
+@code {
+    [Parameter]
+    public string text { get; set; }
+    [Parameter]
+    public string icon { get; set; }
+    [Parameter]
+    public string refLink { get; set; }
+}
