@@ -1,8 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "Q3kFsMkqN/T/G05Y/6Ypv8OynwVLAIf3hF3EkUdlakHYFYqKqvl604LJKQDzAmYgEKL5B0fXzJq/5y2u2BUjrQ==",
+  "dgSpecHash": "TAiqhfM+pPQsB6/wCO5iMQ2EdsqTiLcvC05Z1czcuAvTk7WRevoUGec9WgsVb8qxX3qS9ysNLIsvLWBMv5P1/Q==",
   "success": true,
   "projectFilePath": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/First.Ecard.Presentation.UI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/techno243/.nuget/packages/blazor.bootstrap/3.5.0/blazor.bootstrap.3.5.0.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.aspnetcore.authorization/8.0.11/microsoft.aspnetcore.authorization.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.aspnetcore.components/8.0.11/microsoft.aspnetcore.components.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.aspnetcore.components.analyzers/8.0.11/microsoft.aspnetcore.components.analyzers.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.aspnetcore.components.forms/8.0.11/microsoft.aspnetcore.components.forms.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.aspnetcore.components.web/8.0.11/microsoft.aspnetcore.components.web.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.aspnetcore.metadata/8.0.11/microsoft.aspnetcore.metadata.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.1/microsoft.extensions.dependencyinjection.8.0.1.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.extensions.options/8.0.2/microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/home/techno243/.nuget/packages/microsoft.jsinterop/8.0.11/microsoft.jsinterop.8.0.11.nupkg.sha512",
+    "/home/techno243/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

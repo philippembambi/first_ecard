@@ -7,7 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<ILoginService, LoginService>();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5134/")});
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5134/api/")});
+builder.Services.AddLogging();
+builder.Services.AddBlazorBootstrap();
+builder.Services.AddScoped<TokenStorageService>();
+builder.Services.AddScoped<UserSessionService>();
+// builder.Services.AddRazorPages();
+// builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -22,6 +28,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.MapBlazorHub();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

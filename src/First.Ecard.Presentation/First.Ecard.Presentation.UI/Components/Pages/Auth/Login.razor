@@ -1,73 +1,141 @@
-@page "/login"
 @using First.Ecard.Presentation.UI.Components.Models
+@using First.Ecard.Presentation.UI.Components.Services
 @using First.Ecard.Presentation.UI.Components.Shared
 @using First.Ecard.Presentation.UI.Components.interfaces
+@using System.ComponentModel.DataAnnotations
+@using System.Text.Json
+
+@page "/login"
+@inject ILogger<Login> Logger
 @layout Layout.AuthLayout
 @inject ILoginService LoginService
 @inject NavigationManager Navigation
+@inject TokenStorageService TokenStorage
+@inject UserSessionService UserSession
+
 
 <PageTitle>Login</PageTitle>
 
-<Loading IsLoading="@isLoading" />
-
-  <main class="main-content  mt-0">
-    <section>
-      <div class="page-header min-vh-100">
-        <EditForm class="container"  Model="model" OnValidSubmit="HandleLogin">
+<main class="main-content  mt-0">
+  <section>
+    <div class="page-header min-vh-100">
+      <EditForm class="container" Model="@loginModel" FormName="LoginForm" OnValidSubmit="HandleLogin">
         <DataAnnotationsValidator />
+        <div class="row">
 
-          <div class="row">
           <div class="col-xl-3"></div>
-            <div class="col-xl-5 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
-              <div class="card card-plain">
-                <div class="card-header pb-0 text-start">
-                  <h4 class="font-weight-bolder">Authentification</h4>
-                  <p class="mb-0">Entrez votre email et mot de passe pour se connecter</p>
+          <div class="col-xl-5 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+
+            @if (haveError)
+            {
+              <Alert Color="AlertColor.Danger" class="animate__animated animate__shakeX" Style="color: white">
+                <Icon Name="IconName.ExclamationTriangleFill" class="me-2"></Icon> @error
+              </Alert>
+            }
+
+            <div class="card card-plain">
+              <div class="card-header pb-0 text-start">
+                <h4 class="font-weight-bolder">Authentification</h4>
+                <p class="mb-0">Entrez votre email et mot de passe pour se connecter</p>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <InputText @bind-Value="loginModel.Email" class="form-control form-control-lg" placeholder="Email" />
+                  <ValidationMessage For="@(() => loginModel.Email)" />
                 </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                      <InputText type="email" @bind-Value="model.Email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" />
-                    </div>
-                    <div class="mb-3">
-                      <InputText type="text" @bind-Value="model.Password" class="form-control form-control-lg" placeholder="Mot de passe" aria-label="Mot de passe" />
-                    </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe">
-                      <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
-                    </div>
-                    <div class="text-center">
-                      <button type="submit" disabled="@isLoading" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Connexion
-                      </button>
-                    </div>
+                <div class="mb-3">
+                  <InputText type="password" @bind-Value="loginModel.PasswordHash" class="form-control form-control-lg"
+                    placeholder="Mot de passe" aria-label="Mot de passe" />
+                  <ValidationMessage For="@(() => loginModel.PasswordHash)" />
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                </div>
+                <div class="text-center">
+                  <button type="submit" disabled="@isLoading" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">
+                    @if (isLoading)
+                    {
+                      <LoaderSpin IsLoading="true" />
+                    }
+                    else
+                    {
+                      <span>&nbsp; Connexion</span>
+                    }
+                  </button>
                 </div>
               </div>
             </div>
-          <div class="col-xl-4"></div>  
           </div>
-        </EditForm>
-      </div>
-    </section>
-  </main>
+          <div class="col-xl-4"></div>
+        </div>
+      </EditForm>
+    </div>
+
+  </section>
+</main>
 
 @code {
-  private LoginRequest model = new LoginRequest();
+  [SupplyParameterFromForm]
+  private LoginRequest loginModel { get; set; } = new();
   private bool isLoading = false;
   private string? error;
 
+  private bool haveError = false;
+  private string? modalTitle;
+  private bool showModal = true;
+
+  private string userAccessToken = string.Empty;
+  private string userFullName = string.Empty;
+  private string userRole = string.Empty;
+  private bool _shouldPersistToken;
+  private string? _tokenPersist;
+
+  private async Task activeLoader(bool loaderState)
+  {
+    isLoading = loaderState;
+  }
+
+  private void HandleInvalidForm(EditContext context)
+  {
+    Logger.LogWarning("Formulaire invalide");
+  }
   private async Task HandleLogin()
   {
     isLoading = true;
-    error = null;
+    StateHasChanged();
 
-    bool success = await LoginService.LoginAsync(model);
-    isLoading = false;
-
-    if(!success)
-    {
-      error = "Identifiants incorrects";
-      return;
+    var response = await LoginService.LoginAsync(loginModel);
+    
+    if (!response.IsSuccessStatusCode)
+    { 
+      var errorResponse = await response.Content.ReadFromJsonAsync<ErrorResponse>();
+      error = errorResponse!.Errors[0];
+      modalTitle = errorResponse.Message;
+      haveError = true;
+      isLoading = false;
+      return ;
     }
+    
+    var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+    Logger.LogInformation($"loginResponse => {loginResponse!.FullName}");
+    isLoading = false;    
+    UserSession.Setuser(loginResponse!);
 
-    Navigation.NavigateTo(uri: "/", forceLoad: true);   
+    //await TokenStorage.SetTokenAsync(loginResponse!.AccessToken);
+    _shouldPersistToken = true;
+    _tokenPersist = loginResponse!.AccessToken;
+
+    //isLoading = false;
+  }
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if(_shouldPersistToken)
+    {
+      await TokenStorage.SetTokenAsync(_tokenPersist);
+      _shouldPersistToken = false;
+      Navigation.NavigateTo("/");
+    }
   }
 }

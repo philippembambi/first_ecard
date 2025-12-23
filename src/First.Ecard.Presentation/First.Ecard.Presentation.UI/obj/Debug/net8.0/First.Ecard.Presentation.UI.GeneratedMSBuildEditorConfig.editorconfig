@@ -98,16 +98,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/Shared/ConfirmDialog.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvQ29uZmlybURpYWxvZy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/Shared/ErrorAlert.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvRXJyb3JBbGVydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/Shared/Loading.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvTG9hZGluZy5yYXpvcg==
+[/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/Shared/GenericModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvR2VuZXJpY01vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/Shared/LoaderGrow.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvTG9hZGVyR3Jvdy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/Shared/LoaderSpin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvTG9hZGVyU3Bpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/Components/TransactionTable.razor]

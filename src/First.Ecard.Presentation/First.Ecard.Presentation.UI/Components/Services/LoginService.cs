@@ -20,15 +20,12 @@ namespace First.Ecard.Presentation.UI.Components.Services
             _http = http;
             _navigation = navigation;
         }
-        public async Task<bool> LoginAsync(LoginRequest request)
+        public async Task<HttpResponseMessage> LoginAsync(LoginRequest request)
         {
-            var response = await _http.PostAsJsonAsync("", request);
-            if (!response.IsSuccessStatusCode)
-                return false;
-            var result = await response.Content.ReadFromJsonAsync<LoginResponse>();            
-            _http.DefaultRequestHeaders.Add("Authorization", $"Bearer {result!.AccessToken}");
-
-            return true;
+            HttpResponseMessage response = await _http.PostAsJsonAsync("Login", request);
+            // if(!response.IsSuccessStatusCode)
+            //     _http.DefaultRequestHeaders.Add("Authorization", $"Bearer {result!.AccessToken}");
+            return response;
         }
 
         public Task LogoutAsync()

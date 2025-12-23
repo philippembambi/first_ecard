@@ -8,7 +8,7 @@ namespace First.Ecard.Presentation.UI.Components.interfaces
 {
     public interface ILoginService
     {
-        Task<bool> LoginAsync(LoginRequest request);
+        Task<HttpResponseMessage> LoginAsync(LoginRequest request);
         Task LogoutAsync();
     }
 }
