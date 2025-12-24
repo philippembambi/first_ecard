@@ -1,5 +1,8 @@
-﻿@page "/"
-@using First.Ecard.Presentation.UI.Components.Shared
+﻿@using First.Ecard.Presentation.UI.Components.Shared
+@using Microsoft.AspNetCore.Authorization
+
+@page "/"
+@attribute [Authorize]
 
 <PageTitle>FirstBank RDC</PageTitle>
 

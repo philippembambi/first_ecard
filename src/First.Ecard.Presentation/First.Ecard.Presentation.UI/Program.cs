@@ -1,6 +1,11 @@
 using First.Ecard.Presentation.UI.Components;
 using First.Ecard.Presentation.UI.Components.interfaces;
 using First.Ecard.Presentation.UI.Components.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +15,23 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5134/api/")});
 builder.Services.AddLogging();
 builder.Services.AddBlazorBootstrap();
-builder.Services.AddScoped<TokenStorageService>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+        //options.AccessDeniedPath = "/access-denied";
+        options.Cookie.Name = "FirstEcard.Auth";
+        options.ExpireTimeSpan = TimeSpan.FromHours(2);
+        options.SlidingExpiration = true;
+    })
+;
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<UserSessionService>();
-// builder.Services.AddRazorPages();
-// builder.Services.AddServerSideBlazor();
+builder.Services.AddAuthorization();
+builder.Services.AddCascadingAuthenticationState();
 
 var app = builder.Build();
 
@@ -25,13 +43,11 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 app.UseAntiforgery();
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapBlazorHub();
-
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-
 app.Run();

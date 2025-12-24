@@ -4,13 +4,14 @@
 @using First.Ecard.Presentation.UI.Components.interfaces
 @using System.ComponentModel.DataAnnotations
 @using System.Text.Json
+@using Microsoft.AspNetCore.Authorization
 
 @page "/login"
+@attribute [AllowAnonymous]
 @inject ILogger<Login> Logger
 @layout Layout.AuthLayout
 @inject ILoginService LoginService
 @inject NavigationManager Navigation
-@inject TokenStorageService TokenStorage
 @inject UserSessionService UserSession
 
 
@@ -88,8 +89,6 @@
   private string userAccessToken = string.Empty;
   private string userFullName = string.Empty;
   private string userRole = string.Empty;
-  private bool _shouldPersistToken;
-  private string? _tokenPersist;
 
   private async Task activeLoader(bool loaderState)
   {
@@ -116,26 +115,6 @@
       isLoading = false;
       return ;
     }
-    
-    var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
-    Logger.LogInformation($"loginResponse => {loginResponse!.FullName}");
-    isLoading = false;    
-    UserSession.Setuser(loginResponse!);
-
-    //await TokenStorage.SetTokenAsync(loginResponse!.AccessToken);
-    _shouldPersistToken = true;
-    _tokenPersist = loginResponse!.AccessToken;
-
-    //isLoading = false;
-  }
-
-  protected override async Task OnAfterRenderAsync(bool firstRender)
-  {
-    if(_shouldPersistToken)
-    {
-      await TokenStorage.SetTokenAsync(_tokenPersist);
-      _shouldPersistToken = false;
-      Navigation.NavigateTo("/");
-    }
+    Navigation.NavigateTo("/");
   }
 }

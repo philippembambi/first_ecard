@@ -1,13 +1,20 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
-        <FocusOnNavigate RouteData="routeData" Selector="h1" />
-    </Found>
+﻿@using First.Ecard.Presentation.UI.Components.Pages.Auth
+@using First.Ecard.Presentation.UI.Components.Shared
+@using Microsoft.AspNetCore.Components.Authorization
 
-    <NotFound>
-        <Layout.MainLayout>
-            <h3 class="text-danger">Page not found</h3>
-            <p>Sorry, there's nothing at this address.</p>
-        </Layout.MainLayout>
-    </NotFound>
-</Router>
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">
+                <NotAuthorized>
+                    <RedirectToLogin />
+                </NotAuthorized>
+
+                <Authorizing>
+                    <p>Checking authorization status...</p>
+                </Authorizing>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="routeData" Selector="h1" />
+        </Found>
+    </Router>
+</CascadingAuthenticationState>

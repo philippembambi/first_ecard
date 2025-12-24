@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("First.Ecard.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+874ea87766916fc9d32c5a60fd6323dc8d877340")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8127fcf2d2b0fb13ec9165c21e254557f0696e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("First.Ecard.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("First.Ecard.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
