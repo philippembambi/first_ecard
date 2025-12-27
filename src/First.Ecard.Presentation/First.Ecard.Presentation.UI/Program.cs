@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using First.Ecard.Presentation.UI.Components.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ClientService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5134/api/")});
 builder.Services.AddLogging();
 builder.Services.AddBlazorBootstrap();
@@ -30,6 +32,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<UserSessionService>();
+builder.Services.AddScoped<DateFormatter>();
 builder.Services.AddAuthorization();
 builder.Services.AddCascadingAuthenticationState();
 
@@ -44,10 +47,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseAntiforgery();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapBlazorHub();
+app.UseAntiforgery(); // should be after UseAuthentication and UseAuthorization
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 app.Run();

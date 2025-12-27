@@ -109,3 +109,18 @@ main[b-7exuj01p7z] {
     margin-top: 10px;
     font-size: 20px;
 }
+/* _content/First.Ecard.Presentation.UI/Components/Shared/LoaderGrow.razor.rz.scp.css */
+#parent[b-ir5f11hwfo] {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+#loader-grow[b-ir5f11hwfo] {
+    position: absolute;
+    top: 30%;
+    height: 60px;
+    width: 60px;
+    left: 50%;
+    color: rgb(251, 211, 136);
+}

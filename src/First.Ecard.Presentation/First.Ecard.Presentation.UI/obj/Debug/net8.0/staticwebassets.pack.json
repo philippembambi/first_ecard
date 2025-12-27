@@ -65,6 +65,18 @@
       "PackagePath": "staticwebassets/assets/fonts/nucleo.woff2"
     },
     {
+      "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/1.png",
+      "PackagePath": "staticwebassets/assets/img/1.png"
+    },
+    {
+      "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/2.png",
+      "PackagePath": "staticwebassets/assets/img/2.png"
+    },
+    {
+      "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/5.png",
+      "PackagePath": "staticwebassets/assets/img/5.png"
+    },
+    {
       "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/70eaefc5bc6bfbfdd6ffa7ba31cfa7c1_L.jpg",
       "PackagePath": "staticwebassets/assets/img/70eaefc5bc6bfbfdd6ffa7ba31cfa7c1_L.jpg"
     },
@@ -275,6 +287,10 @@
     {
       "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/ivancik.jpg",
       "PackagePath": "staticwebassets/assets/img/ivancik.jpg"
+    },
+    {
+      "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/jeune-homme-noir-visage-avec-moustache-portrait-ou-avatar-masculin-de-style-plat-vue-avant-vecteur-2hx8wh2.jpg",
+      "PackagePath": "staticwebassets/assets/img/jeune-homme-noir-visage-avec-moustache-portrait-ou-avatar-masculin-de-style-plat-vue-avant-vecteur-2hx8wh2.jpg"
     },
     {
       "Id": "/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/wwwroot/assets/img/kal-visuals-square.jpg",

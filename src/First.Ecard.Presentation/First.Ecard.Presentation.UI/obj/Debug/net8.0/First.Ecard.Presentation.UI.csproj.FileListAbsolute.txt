@@ -50,3 +50,4 @@
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/home/techno243/Documents/Costa Files/FisrtBank/First.Ecard/src/First.Ecard.Presentation/First.Ecard.Presentation.UI/obj/Debug/net8.0/scopedcss/Components/Shared/LoaderGrow.razor.rz.scp.css

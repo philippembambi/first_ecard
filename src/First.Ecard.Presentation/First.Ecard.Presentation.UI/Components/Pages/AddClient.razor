@@ -1,90 +1,159 @@
+@using System.ComponentModel.DataAnnotations
+@using BlazorBootstrap.Components.Form.SelectInput
+@using First.Ecard.Presentation.UI.Components.Models
+@using First.Ecard.Presentation.UI.Components.Services
 @page "/clients/add"
+
+@inject ILogger<AddClient> Logger
+@inject NavigationManager Navigation
+@inject ClientService ClientService
 
 <PageTitle>Add Client</PageTitle>
 
-<InnerNavBar 
-    optionOne="Liste des Clients" 
-    optionOneLink="/clients" 
-    optionTwo="Ajouter un Client" 
-    optionTwoLink="/clients/add"
-    previousPage="Clients"
-    currentPage="Ajouter"
-/>
+<InnerNavBar optionOne="Liste des Clients" optionOneLink="/clients" optionTwo="Ajouter un Client"
+  optionTwoLink="/clients/add" previousPage="Clients" currentPage="Ajouter" />
 
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header pb-0">
-              <div class="d-flex align-items-center">
-                <p class="mb-0 text-uppercase">Nouveau client</p>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Nom</label>
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Email</label>
-                    <input class="form-control" type="email">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Type de Client</label>
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Montant transaction</label>
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-              </div>
-              <hr class="horizontal dark">
-              <p class="text-uppercase text-sm">Détails sur la transaction</p>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Address</label>
-                    <input class="form-control" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">City</label>
-                    <input class="form-control" type="text" value="New York">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Country</label>
-                    <input class="form-control" type="text" value="United States">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Postal code</label>
-                    <input class="form-control" type="text" value="437300">
-                  </div>
-                </div>
-              </div>
-
-              <button class="btn btn-dark btn-sm ms-auto">Enregistrer</button>
-
-            </div>
-            
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header pb-0">
+          <div class="d-flex align-items-center">
+            <p class="mb-0 text-uppercase">Nouveau client</p>
           </div>
-          <div class="col-md-1"></div>
         </div>
+        <EditForm class="container" Model="@clientModel" FormName="AddClientForm" OnValidSubmit="HandleAddCLient">
+          <DataAnnotationsValidator />
 
+          @if (haveError)
+          {
+            <Alert Color="AlertColor.Danger" class="animate__animated animate__shakeX" Style="color: white">
+              <Icon Name="IconName.ExclamationTriangleFill" class="me-2"></Icon> @error
+            </Alert>
+          }
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Nom</label>
+                  <InputText class="form-control" @bind-Value="clientModel.LastName" placeholder="Mbambi" />
+                  <ValidationMessage For="@(() => clientModel.LastName)" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Prénom</label>
+                  <InputText class="form-control" @bind-Value="clientModel.FirstName" placeholder="Philippe" />
+                  <ValidationMessage For="@(() => clientModel.FirstName)" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Sexe</label>
+                  <InputSelect class="form-control" @bind-Value="clientModel.Gender">
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                  </InputSelect>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Date de Naissance</label>
+                  <InputDate @bind-Value="clientModel.DateOfBirth" class="form-control" />
+                  <ValidationMessage For="@(() => clientModel.DateOfBirth)" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Email</label>
+                  <InputText @bind-Value="clientModel.Email" class="form-control"
+                    placeholder="philippembambi413@gmail.com" />
+                  <ValidationMessage For="@(() => clientModel.Email)" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Numéro de téléphone</label>
+                  <InputText @bind-Value="clientModel.PhoneNumber" class="form-control" placeholder="+243826686661" />
+                  <ValidationMessage For="@(() => clientModel.PhoneNumber)" />
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Address</label>
+                  <InputText @bind-Value="clientModel.Address" class="form-control"
+                    placeholder="Kinshasa, Limete-salongo" />
+                  <ValidationMessage For="@(() => clientModel.Address)" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Nationalité</label>
+                  <InputText @bind-Value="clientModel.Nationality" class="form-control" placeholder="Congolaise" />
+                  <ValidationMessage For="@(() => clientModel.Nationality)" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Type de pièce d'indentité</label>
+                  <InputSelect class="form-control" @bind-Value="clientModel.IdCardType">
+                    <option value="NationalID">Carte d'électeur</option>
+                    <option value="Passport">Passport</option>
+                    <option value="DriverLicense">Permis de conduire</option>
+                  </InputSelect>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Numéro pièce d'indentité</label>
+                  <InputText class="form-control" @bind-Value="clientModel.IdCardNumber" />
+                  <ValidationMessage For="@(() => clientModel.IdCardNumber)" />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-sm ms-auto">Enregistrer</button>
+          </div>
+        </EditForm>
       </div>
-
+      <div class="col-md-1"></div>
     </div>
+
+  </div>
+
+</div>
+
+@code {
+  [SupplyParameterFromForm]
+  private ClientRequest clientModel { get; set; } = new ClientRequest();
+
+  private bool isLoading = false;
+  private string? error;
+  private bool haveError = false;
+
+  private async Task HandleAddCLient()
+  {
+    isLoading = true;
+    StateHasChanged();
+
+    var response = await ClientService.AddClientAsync(clientModel);
+
+    if (!response.IsSuccessStatusCode)
+    {
+      var msg = await response.Content.ReadAsStringAsync();
+      Logger.LogInformation(msg);
+      error = msg;
+      haveError = true;
+      isLoading = false;
+      return;
+    }
+    Navigation.NavigateTo("/clients");
+  }
+
+}
