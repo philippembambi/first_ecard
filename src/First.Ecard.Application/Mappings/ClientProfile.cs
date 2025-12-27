@@ -16,6 +16,7 @@ namespace First.Ecard.Application.Mappings
             CreateMap<ClientCreateDto, Client>();
             CreateMap<CreateClientCommand, Client>();
             CreateMap<Client, ClientDto>();
+            CreateMap<Client, ClientSummary>();
             CreateMap<ClientUpdateDto, Client>();
         }
     }

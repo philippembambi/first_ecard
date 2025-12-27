@@ -29,7 +29,7 @@ namespace First.Ecard.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Account>> GetAllWithClientAsync()
+        public async Task<List<Account>> GetAllWithClientAsync()
         {
             return await _context.Accounts
                 .Include(a => a.Client)

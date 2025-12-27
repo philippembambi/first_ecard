@@ -31,8 +31,8 @@ namespace First.Ecard.Presentation.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllAccountQuery());
-            return Ok(result);
+            var accounts = await _mediator.Send(new GetAllAccountQuery());
+            return Ok(accounts);
         }
 
         [HttpGet("{id:int}")]

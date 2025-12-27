@@ -13,10 +13,10 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
 {
     public class GetAllAccountQueryHandler : IRequestHandler<GetAllAccountQuery, List<AccountDto>>
     {
-        public readonly IGenericRepository<Account> _accountRepository;
+        public readonly IAccountRepository _accountRepository;
         public readonly IMapper _mapper;
 
-        public GetAllAccountQueryHandler(IGenericRepository<Account> accountRepository, IMapper mapper)
+        public GetAllAccountQueryHandler(IAccountRepository accountRepository, IMapper mapper)
         {
             _accountRepository = accountRepository;
             _mapper = mapper;
@@ -24,7 +24,7 @@ namespace First.Ecard.Application.Features.Accounts.Handlers
 
         public async Task<List<AccountDto>> Handle(GetAllAccountQuery request, CancellationToken cancellationToken)
         {
-            var accounts = await _accountRepository.GetAllAsync();
+            var accounts = await _accountRepository.GetAllWithClientAsync();
             return _mapper.Map<List<AccountDto>>(accounts);
         }
         

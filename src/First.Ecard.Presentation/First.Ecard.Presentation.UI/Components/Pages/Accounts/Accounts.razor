@@ -1,4 +1,13 @@
+@using First.Ecard.Presentation.UI.Components.Helpers
+@using First.Ecard.Presentation.UI.Components.Models
+@using First.Ecard.Presentation.UI.Components.Services
+@using First.Ecard.Presentation.UI.Components.Shared
+
 @page "/accounts"
+
+@inject ClientService ClientService
+@inject ILogger<Accounts> Logger
+@inject DateFormatter DateFormatter
 
 <PageTitle>Accounts</PageTitle>
 
@@ -11,4 +20,121 @@
     currentPage="Accounts"
 />
 
-<TransactionTable />
+@if (isLoading)
+{
+    <LoaderGrow IsLoading="@isLoading" />
+}
+else if (!clients.Any())
+{
+    <Alert Color="AlertColor.Light" class="mt-8 mx-3">
+        <Icon Name="IconName.ExclamationTriangleFill" class="me-2"></Icon>
+        Aucun client trouvé !
+    </Alert>
+}
+else
+{
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Clients</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID
+                                        </th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Nom</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Sexe</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Email</th>
+
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Téléphone</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Date d'enregistrement</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (ClientResponse client in clients)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <p class="d-flex px-3 py-1">@client.Id</p>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex py-1">
+                                                    <div>
+                                                        <img src="@($"../assets/img/{client.Id}.png")"
+                                                            class="avatar avatar-sm me-3" alt="user1">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@client.FirstName @client.LastName</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">@client.Gender</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">@client.Email</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">@client.PhoneNumber</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    @DateFormatter.GetDateFromDateTime(client.CreatedAt)</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="btn btn-dark font-weight-bold text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    Modifier
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<ClientResponse> clients = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            clients = await ClientService.GetClientAsync();
+
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning($"Erreur lors de chargement des clients : {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
