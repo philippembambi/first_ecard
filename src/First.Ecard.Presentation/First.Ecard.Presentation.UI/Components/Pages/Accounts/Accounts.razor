@@ -5,9 +5,10 @@
 
 @page "/accounts"
 
-@inject ClientService ClientService
+@inject AccountService AccountService
 @inject ILogger<Accounts> Logger
 @inject DateFormatter DateFormatter
+@inject BoostrapClassFormatter BoostrapClassFormatter
 
 <PageTitle>Accounts</PageTitle>
 
@@ -24,11 +25,11 @@
 {
     <LoaderGrow IsLoading="@isLoading" />
 }
-else if (!clients.Any())
+else if (!accounts.Any())
 {
     <Alert Color="AlertColor.Light" class="mt-8 mx-3">
         <Icon Name="IconName.ExclamationTriangleFill" class="me-2"></Icon>
-        Aucun client trouvé !
+        Aucun Compte trouvé !
     </Alert>
 }
 else
@@ -38,7 +39,7 @@ else
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Clients</h6>
+                        <h6>Comptes</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -49,60 +50,64 @@ else
                                         </th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nom</th>
+                                            Numéro de compte</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Sexe</th>
+                                            Détenteur</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Email</th>
+                                            Type de compte</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Devise</th>
 
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Téléphone</th>
+                                            Statut de compte</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Date d'enregistrement</th>
+                                            Date de création</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (ClientResponse client in clients)
+                                    @foreach (AccountResponse account in accounts)
                                     {
                                         <tr>
                                             <td>
-                                                <p class="d-flex px-3 py-1">@client.Id</p>
+                                                <p class="d-flex px-3 py-1">@account.Id</p>
                                             </td>
                                             <td>
                                                 <div class="d-flex py-1">
-                                                    <div>
-                                                        <img src="@($"../assets/img/{client.Id}.png")"
-                                                            class="avatar avatar-sm me-3" alt="user1">
-                                                    </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">@client.FirstName @client.LastName</h6>
+                                                        <h6 class="mb-0 text-sm">@account?.AccountNumber</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">@client.Gender</p>
+                                                <p class="text-sm font-weight-bold mb-0">@account?.Client?.FirstName @account?.Client?.LastName</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">@client.Email</p>
+                                                <p class="text-sm font-weight-bold mb-0">@account?.AccountType</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">@client.PhoneNumber</p>
+                                                <p class="text-sm font-weight-bold mb-0">@account?.Currency</p>
                                             </td>
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
-                                                    @DateFormatter.GetDateFromDateTime(client.CreatedAt)</p>
+                                                <span class=@BoostrapClassFormatter.FormatAccountStatus(account!.Status)>@account?.Status</span>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    @account?.CreatedAt</p>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="#" class="btn btn-dark font-weight-bold text-xs" data-toggle="tooltip"
                                                     data-original-title="Edit user">
-                                                    Modifier
+                                                    Mettre à jour
                                                 </a>
                                             </td>
                                         </tr>
@@ -118,19 +123,20 @@ else
 }
 
 @code {
-    private List<ClientResponse> clients = new();
+    private List<AccountResponse> accounts = new();
     private bool isLoading = true;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            clients = await ClientService.GetClientAsync();
+            accounts = await AccountService.GetAccountsAsync();
+            Logger.LogInformation($"Comptes chargés avec succès. {accounts}");
 
         }
         catch (Exception ex)
         {
-            Logger.LogWarning($"Erreur lors de chargement des clients : {ex.Message}");
+            Logger.LogWarning($"Erreur lors de chargement des comptes : {ex.Message}");
         }
         finally
         {

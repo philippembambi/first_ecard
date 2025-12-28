@@ -17,6 +17,6 @@ namespace First.Ecard.Application.Dtos
         public int ClientId { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public ClientSummary? Client { get; set; }
+        public required ClientSummary Client { get; set; }
     }
 }
