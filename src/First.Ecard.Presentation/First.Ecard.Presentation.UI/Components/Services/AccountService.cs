@@ -19,10 +19,20 @@ namespace First.Ecard.Presentation.UI.Components.Services
             return await _http.GetFromJsonAsync<List<AccountResponse>>("Accounts") ?? new List<AccountResponse>();
         }
 
-        // public async Task<HttpResponseMessage> AddClientAsync(ClientRequest clientRequest)
-        // {
-        //     var response = await _http.PostAsJsonAsync("Client", clientRequest);
-        //     return response;
-        // }
+        public async Task<HttpResponseMessage> AddAccountAsync(AccountRequest accountRequest)
+        {
+            var response = await _http.PostAsJsonAsync("Accounts", accountRequest);
+            return response;
+        }
+
+        public async Task<List<AccountTypesResponse>> GetAccountTypesAsync()
+        {
+            return await _http.GetFromJsonAsync<List<AccountTypesResponse>>("Accounts/account_types") ?? new List<AccountTypesResponse>();
+        }
+
+        public async Task<List<CurrencyResponse>> GetCurrencyAsync()
+        {
+            return await _http.GetFromJsonAsync<List<CurrencyResponse>>("Accounts/currencies") ?? new List<CurrencyResponse>();
+        }
     }
 }

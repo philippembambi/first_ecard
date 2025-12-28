@@ -1,88 +1,127 @@
 @page "/accounts/add"
+@using First.Ecard.Presentation.UI.Components.Models
+@using First.Ecard.Presentation.UI.Components.Services
+@inject ILogger<AddAccount> Logger
+@inject NavigationManager Navigation
+@inject AccountService AccountService
+@inject ClientService ClientService
 
 <PageTitle>Add Account</PageTitle>
 
-<InnerNavBar 
-    optionOne="Liste des Comptes" 
-    optionOneLink="/accounts" 
-    optionTwo="Créer un Compte" 
-    optionTwoLink="/accounts/add"
-    previousPage="Accounts"
-    currentPage="Ajouter"
-/>
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header pb-0">
-              <div class="d-flex align-items-center">
-                <p class="mb-0 text-uppercase">Nouveau Compte</p>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Nom</label>
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Email</label>
-                    <input class="form-control" type="email">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Type de Client</label>
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Montant transaction</label>
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-              </div>
-              <hr class="horizontal dark">
-              <p class="text-uppercase text-sm">Détails sur la transaction</p>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Address</label>
-                    <input class="form-control" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">City</label>
-                    <input class="form-control" type="text" value="New York">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Country</label>
-                    <input class="form-control" type="text" value="United States">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Postal code</label>
-                    <input class="form-control" type="text" value="437300">
-                  </div>
-                </div>
-              </div>
+<InnerNavBar optionOne="Liste des Comptes" optionOneLink="/accounts" optionTwo="Créer un Compte"
+  optionTwoLink="/accounts/add" previousPage="Accounts" currentPage="Ajouter" />
 
-              <button class="btn btn-dark btn-sm ms-auto">Enregistrer</button>
-
-            </div>
-            
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header pb-0">
+          <div class="d-flex align-items-center">
+            <p class="mb-0 text-uppercase">Créer un Compte</p>
           </div>
-          <div class="col-md-1"></div>
         </div>
+        <EditForm class="container" Model="@accountModel" FormName="AddClientForm" OnValidSubmit="HandleAddAccount">
+          <DataAnnotationsValidator />
 
+          @if (haveError)
+          {
+            <Alert Color="AlertColor.Danger" class="animate__animated animate__shakeX" Style="color: white">
+              <Icon Name="IconName.ExclamationTriangleFill" class="me-2"></Icon> @error
+            </Alert>
+          }
+
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Type de compte</label>
+                  <InputSelect class="form-control" @bind-Value="accountModel.AccountType">
+                    @foreach (var type in accountTypes)
+                    {
+                      <option value="@type.Name">@type.Name</option>
+                    }
+                  </InputSelect>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Client associé</label>
+                  <InputSelect class="form-control" @bind-Value="accountModel.ClientId">
+                    @foreach (var client in clients)
+                    {
+                      <option value="@client.Id">@client.FirstName @client.LastName</option>
+                    }
+                  </InputSelect>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Devise</label>
+                  <InputSelect class="form-control" @bind-Value="accountModel.Currency">
+                    @foreach (var currency in currencies)
+                    {
+                      <option value="@currency.Name">@currency.Name</option>
+                    }
+                  </InputSelect>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-dark btn-sm ms-auto">Enregistrer</button>
+          </div>
+        </EditForm>
       </div>
+      <div class="col-md-1"></div>
     </div>
+
+  </div>
+
+</div>
+
+@code {
+  [SupplyParameterFromForm]
+  private AccountRequest accountModel { get; set; } = new AccountRequest();
+  private List<ClientResponse> clients = new List<ClientResponse>();
+  private List<AccountTypesResponse> accountTypes = new List<AccountTypesResponse>();
+  private List<CurrencyResponse> currencies = new List<CurrencyResponse>();
+
+  private bool isLoading = false;
+  private string? error;
+  private bool haveError = false;
+
+  protected override async Task OnInitializedAsync()
+  {
+    isLoading = true;
+    StateHasChanged();
+
+    var _clients = await ClientService.GetClientAsync();
+    clients = _clients;
+    var _accountTypes = await AccountService.GetAccountTypesAsync();
+    var _currencies = await AccountService.GetCurrencyAsync();
+
+    accountTypes = _accountTypes;
+    currencies = _currencies;
+    isLoading = false;
+  }
+  private async Task HandleAddAccount()
+  {
+    isLoading = true;
+    StateHasChanged();
+
+    var response = await AccountService.AddAccountAsync(accountModel);
+
+    if (!response.IsSuccessStatusCode)
+    {
+      var msg = await response.Content.ReadAsStringAsync();
+      Logger.LogInformation(msg);
+      error = msg;
+      haveError = true;
+      isLoading = false;
+      return;
+    }
+    Navigation.NavigateTo("/accounts");
+  }
+}
