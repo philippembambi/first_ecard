@@ -9,5 +9,8 @@ namespace First.Ecard.Application.Interfaces
     public interface IAccountRepository : IGenericRepository<Account>
     {
         Task<Account?> GetByAccountNumberAsync(string accountNumber);
+        Task<List<Account>> GetByClientIdAsync(int clientId);
+        Task<List<Account>> GetAllWithClientAsync(); 
+
     }
 }

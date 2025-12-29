@@ -33,5 +33,12 @@ namespace First.Ecard.Presentation.Api.Controllers
             var result = await _mediator.Send(new GetAllAgentQuery());
             return Ok(result);
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _mediator.Send(new GetAgentByIdQuery(id));
+            return Ok(result);
+        }
     }
 }

@@ -16,34 +16,6 @@ namespace First.Ecard.Domain.Entities
         public DateTime ExpiryDate { get; set; }
         public int AccountId { get; set; }
         public Account? Account { get; set; }
-
-        public Card()
-        {}
-        public Card(CardType cardType, DateTime expiryDate, int accountId)
-        {
-            CardType = cardType;
-            ExpiryDate = expiryDate;
-            AccountId = accountId;
-            
-            CardNumber = GenerateCardNumber();
-            CVV = GenerateCVV();
-            CreatedAt = DateTime.UtcNow;
-        }
-
-        public bool IsValidExpiryDate() => ExpiryDate >= DateTime.UtcNow;
-        public bool IsValidCardNumber() => !string.IsNullOrEmpty(CardNumber) && CardNumber.Length == 16;
-        public bool IsValidCVV() => !string.IsNullOrEmpty(CVV) && CVV.Length == 3;
-        public void Validate()
-        {
-            if (!IsValidExpiryDate())
-                throw new CardException("Card has expired.");
-
-            if (!IsValidCardNumber())
-                throw new CardException("Invalid card number.");
-
-            if (!IsValidCVV())
-                throw new CardException("Invalid CVV.");
-        }
         public static string GenerateCardNumber()
         {
             var random = new Random();

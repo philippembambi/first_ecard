@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using First.Ecard.Application.Features.Accounts.Commands;
 using First.Ecard.Application.Features.Accounts.Queries;
+using First.Ecard.Application.Dtos;
+using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Presentation.Api.Controllers
 {
@@ -21,7 +23,7 @@ namespace First.Ecard.Presentation.Api.Controllers
         } 
 
         [HttpPost]
-        public async Task<IActionResult> CreateAccount(CreateAccountCommand command)
+        public async Task<IActionResult> Create(CreateAccountCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
@@ -30,8 +32,79 @@ namespace First.Ecard.Presentation.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllAccountQuery());
+            var accounts = await _mediator.Send(new GetAllAccountQuery());
+            return Ok(accounts);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _mediator.Send(new GetAccountByIdQuery(id));
             return Ok(result);
+        }
+
+        [HttpPut("update_status")]
+        public async Task<IActionResult> Update(AccountUpdateDto accountUpdateDto)
+        {
+            var result = await _mediator.Send(new UpdateAccountStatusCommand(accountUpdateDto));
+            return Ok(result);
+        }
+
+        [HttpDelete("delete/{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _mediator.Send(new DeleteAccountCommand(id));
+            return NoContent();
+        }
+
+        [HttpPut("deposit")]
+        public async Task<IActionResult> MakeDeposit(DepositMoneyDto depositMoneyDto)
+        {
+            var result = await _mediator.Send(new DepositMoneyCommand(depositMoneyDto));
+            return Ok(result);
+        }
+
+        [HttpPut("withdraw")]
+        public async Task<IActionResult> MakeWithdraw(WithdrawMoneyDto withdrawMoneyDto)
+        {
+            var result = await _mediator.Send(new WithdrawMoneyCommand(withdrawMoneyDto));
+            return Ok(result);
+        }
+
+        [HttpGet("client/{client_id:int}")]
+        public async Task<IActionResult> GetAllByClientId(int client_id)
+        {
+            var result = await _mediator.Send(new GetAllAccountByClientIdQuery(client_id));
+            return Ok(result);
+        }
+
+        [HttpGet("{account_number}")]
+        public async Task<IActionResult> GetByAccountNumber(string account_number)
+        {
+            var result = await _mediator.Send(new GetAccountByAccountNumberQuery(account_number));
+            return Ok(result);
+        }
+
+        [HttpGet("account_types")]
+        public async Task<IActionResult> GetAccountTypeEnum()
+        {
+            var values = Enum.GetValues<AccountTypeEnum>()
+                .Select(e => new { 
+                    Id = (int)e, 
+                    Name = e.ToString() })
+                .ToList();
+            return Ok(values);
+        }
+
+        [HttpGet("currencies")]
+        public async Task<IActionResult> GetCurrencyEnum()
+        {
+            var values = Enum.GetValues<CurrencyType>()
+                .Select(e => new { 
+                    Id = (int)e, 
+                    Name = e.ToString() })
+                .ToList();
+            return Ok(values);
         }
     }
 }

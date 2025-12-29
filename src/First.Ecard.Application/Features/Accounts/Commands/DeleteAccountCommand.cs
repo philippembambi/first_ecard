@@ -7,8 +7,5 @@ using MediatR;
 
 namespace First.Ecard.Application.Features.Accounts.Commands
 {
-    public class DeleteAccountCommand : IRequest<AccountDto>
-    {
-        public int AccountId {get; set;}
-    }
+    public record DeleteAccountCommand(int AccountId) : IRequest<AccountDto>;
 }

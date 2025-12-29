@@ -26,7 +26,7 @@ namespace First.Ecard.Infrastructure.Repositories
             return entity;
         }
 
-        public async Task Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
@@ -35,6 +35,11 @@ namespace First.Ecard.Infrastructure.Repositories
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<Agent> GetByEmailAsync(string email)
+        {
+            return await _context.Set<Agent>().FirstOrDefaultAsync(x => x.Email == email);
         }
 
         public async Task<T> GetByIdAsync(int id)

@@ -36,7 +36,6 @@ namespace First.Ecard.Application.Behaviors
                 {
                     var errors = failures.Select(f => f.ErrorMessage).ToList();
 
-                    //throw new ValidationException(failures);
                     _logger.LogWarning("Validation failed for {RequestType}: {Errors}", typeof(TRequest).Name, string.Join(", ", errors));
                     throw new FirstValidationException(errors);
                 }

@@ -7,8 +7,5 @@ using MediatR;
 
 namespace First.Ecard.Application.Features.Accounts.Queries
 {
-    public class GetAccountByIdQuery : IRequest<AccountDto>
-    {
-         public int AccountId { get; set; }
-    }
+    public record GetAccountByIdQuery(int AccountId) : IRequest<AccountDto>;
 }

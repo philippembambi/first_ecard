@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/First.Ecard.Presentation.UI.props" />
+</Project>

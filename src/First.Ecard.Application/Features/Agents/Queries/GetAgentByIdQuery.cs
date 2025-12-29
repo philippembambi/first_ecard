@@ -7,8 +7,5 @@ using MediatR;
 
 namespace First.Ecard.Application.Features.Agents.Queries
 {
-    public class GetAgentByIdQuery : IRequest<AgentDto>
-    {
-        public int AgentId {get; set;}
-    }
+    public record GetAgentByIdQuery(int Id) : IRequest<AgentDto>;
 }

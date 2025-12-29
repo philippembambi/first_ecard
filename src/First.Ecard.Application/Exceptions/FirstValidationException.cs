@@ -14,5 +14,12 @@ namespace First.Ecard.Application.Exceptions
         {
             Errors = errors.ToList();
         }
+
+        public FirstValidationException(string message, IEnumerable<string> errors)
+            : base(message)
+        {
+            //Errors = errors?.ToList() ?? new List<string>();
+            Errors = errors.ToList();
+        }
     }
 }

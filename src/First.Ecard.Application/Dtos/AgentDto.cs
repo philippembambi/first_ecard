@@ -13,6 +13,7 @@ namespace First.Ecard.Application.Dtos
         public string? LastName { get; set; }
         public GenderType Gender { get; set; }
         public string? Email { get; set; }
+        public string PasswordHash {get; set;} = string.Empty;
         public DateTime CreatedAt { get; set; }
         public AgentRole Role { get; set; }
         public string? MatriculationNumber { get; set; }

@@ -1,0 +1,10 @@
+@if (IsLoading)
+{
+    <div id="parent">
+        <div class="spinner-grow" id="loader-grow"></div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsLoading { get; set; }
+}

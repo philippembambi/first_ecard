@@ -1,0 +1,8 @@
+@if (IsLoading)
+{
+    <span class="spinner-border" style="color: white"></span>
+}
+
+@code {
+    [Parameter] public bool IsLoading { get; set; }
+}

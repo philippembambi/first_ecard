@@ -8,8 +8,7 @@ namespace First.Ecard.Application.Dtos
 {
     public class AccountUpdateDto
     {
-        public AccountTypeEnum ? AccountType { get; set; }
-        public decimal Balance { get; set; }
+        public int AccountId {get;set;}
         public AccountStatus ? Status { get; set; }
     }
 }

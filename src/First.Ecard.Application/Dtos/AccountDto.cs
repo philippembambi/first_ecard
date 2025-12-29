@@ -16,5 +16,7 @@ namespace First.Ecard.Application.Dtos
         public AccountStatus ? Status { get; set; }
         public int ClientId { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public required ClientSummary Client { get; set; }
     }
 }

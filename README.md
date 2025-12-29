@@ -11,6 +11,7 @@ mkdir First.Ecard.Presentation
 - dotnet sln First.Ecard.sln add src/First.Ecard.Application
 - dotnet sln First.Ecard.sln add src/First.Ecard.Infrastructure
 - dotnet sln First.Ecard.sln add src/First.Ecard.Presentation/First.Ecard.Presentation.Api
+- dotnet sln First.Ecard.sln add src/First.Ecard.Presentation/First.Ecard.Presentation.UI
 
 ### Add Project References
 - dotnet add src/First.Ecard.Application/First.Ecard.Application.csproj reference src/First.Ecard.Domain/First.Ecard.Domain.csproj
@@ -34,6 +35,8 @@ dotnet add package FluentValidation
 - dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.7
 - dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 8.0.4
 - dotnet add package BCrypt.Net-Next
+- dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.0
+- dotnet add package System.IdentityModel.Tokens.Jwt
 
 ### Api Packages
 - dotnet add package Microsoft.EntityFrameworkCore.Tools
@@ -45,7 +48,13 @@ dotnet add package FluentValidation
 ### 
 - dotnet ef migrations add RenamePasswordField -o Migrations
 - dotnet ef migrations add RenamePasswordToPasswordHash -o Migrations
-dotnet ef migrations add addRoleStringConversion -o Migrations
+- dotnet ef migrations add addRoleStringConversion -o Migrations
+- dotnet ef migrations add setDateOfBithToDateOnly -o Migrations
+
+### Use npm defined version
+- nvm use
+
+- dotnet add package Blazor.Bootstrap
 
 -- sudo -u postgres psql
 --create database first_e_card;

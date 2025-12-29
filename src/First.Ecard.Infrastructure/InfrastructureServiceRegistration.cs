@@ -27,6 +27,7 @@ namespace First.Ecard.Infrastructure
             services.AddScoped<IAgentRepository, AgentRepository>();
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IJwtService, JwtService>();
 
             return services;
         }

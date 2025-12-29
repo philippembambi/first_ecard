@@ -8,6 +8,7 @@ using First.Ecard.Application.Interfaces;
 using First.Ecard.Domain.Entities;
 using MediatR;
 using First.Ecard.Application.Features.Agents.Queries;
+using First.Ecard.Application.Exceptions;
 
 namespace First.Ecard.Application.Features.Agents.Handlers
 {
@@ -24,7 +25,7 @@ namespace First.Ecard.Application.Features.Agents.Handlers
 
         public async Task<AgentDto> Handle(GetAgentByIdQuery request, CancellationToken cancellationToken)
         {
-            var agent = await _agentRepository.GetByIdAsync(request.AgentId);
+            var agent = await _agentRepository.GetByIdAsync(request.Id) ?? throw new FirstValidationException("Not found", new[] {$"No agent found with id {request.Id}"});
             return _mapper.Map<AgentDto>(agent); 
         }
     }

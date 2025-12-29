@@ -1,0 +1,13 @@
+@page "/logout"
+@using First.Ecard.Presentation.UI.Components.interfaces
+@inject NavigationManager Navigation
+@inject ILoginService LoginService
+@layout Layout.AuthLayout
+
+@code {
+    protected override void OnInitialized()
+    {
+        LoginService.LogoutAsync();
+        Navigation.NavigateTo("/login", true);
+    }
+}

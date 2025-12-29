@@ -21,20 +21,6 @@ namespace First.Ecard.Domain.Entities
         public Client? Client { get; set; }
         public ICollection<Card> Cards { get; set; } = [];
 
-        public Account()
-        {}
-        public Account(AccountTypeEnum accountType, CurrencyType currency, int clientId)
-        {
-            ClientId = clientId;
-            AccountType = accountType;
-            Currency = currency;
-
-            Balance = 0.0m;
-            Status = AccountStatus.Active;
-            AccountNumber = GenerateAccountNumber();
-            CreatedAt = DateTime.UtcNow;
-        }
-
         public bool IsActiveStatus() => Status == AccountStatus.Active;
         public bool IsSuspendedStatus() => Status == AccountStatus.Suspended;
         public static bool IsPositiveAmount(decimal amount) => amount > 0;
