@@ -28,6 +28,9 @@ namespace First.Ecard.Application.Features.Clients.Handlers
 
             client.CreatedAt = DateTime.UtcNow;
             
+            if(request.DateOfBirth is not null)
+                client.Age = Client.CalculateAge((DateOnly)request.DateOfBirth);
+            
             await _clientRepository.CreateAsync(client);
             return _mapper.Map<ClientDto>(client); 
         }

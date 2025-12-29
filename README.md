@@ -51,6 +51,11 @@ dotnet add package FluentValidation
 - dotnet ef migrations add addRoleStringConversion -o Migrations
 - dotnet ef migrations add setDateOfBithToDateOnly -o Migrations
 
+### Use npm defined version
+- nvm use
+
+- dotnet add package Blazor.Bootstrap
+
 -- sudo -u postgres psql
 --create database first_e_card;
 -- \c first_health_care_db;

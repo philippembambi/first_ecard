@@ -7,6 +7,7 @@ using MediatR;
 using First.Ecard.Application.Features.Accounts.Commands;
 using First.Ecard.Application.Features.Accounts.Queries;
 using First.Ecard.Application.Dtos;
+using First.Ecard.Domain.Enums;
 
 namespace First.Ecard.Presentation.Api.Controllers
 {
@@ -31,8 +32,8 @@ namespace First.Ecard.Presentation.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllAccountQuery());
-            return Ok(result);
+            var accounts = await _mediator.Send(new GetAllAccountQuery());
+            return Ok(accounts);
         }
 
         [HttpGet("{id:int}")]
@@ -82,6 +83,28 @@ namespace First.Ecard.Presentation.Api.Controllers
         {
             var result = await _mediator.Send(new GetAccountByAccountNumberQuery(account_number));
             return Ok(result);
+        }
+
+        [HttpGet("account_types")]
+        public async Task<IActionResult> GetAccountTypeEnum()
+        {
+            var values = Enum.GetValues<AccountTypeEnum>()
+                .Select(e => new { 
+                    Id = (int)e, 
+                    Name = e.ToString() })
+                .ToList();
+            return Ok(values);
+        }
+
+        [HttpGet("currencies")]
+        public async Task<IActionResult> GetCurrencyEnum()
+        {
+            var values = Enum.GetValues<CurrencyType>()
+                .Select(e => new { 
+                    Id = (int)e, 
+                    Name = e.ToString() })
+                .ToList();
+            return Ok(values);
         }
     }
 }

@@ -1,4 +1,14 @@
+@using First.Ecard.Presentation.UI.Components.Helpers
+@using First.Ecard.Presentation.UI.Components.Models
+@using First.Ecard.Presentation.UI.Components.Services
+@using First.Ecard.Presentation.UI.Components.Shared
+
 @page "/accounts"
+
+@inject AccountService AccountService
+@inject ILogger<Accounts> Logger
+@inject DateFormatter DateFormatter
+@inject BoostrapClassFormatter BoostrapClassFormatter
 
 <PageTitle>Accounts</PageTitle>
 
@@ -11,4 +21,126 @@
     currentPage="Accounts"
 />
 
-<TransactionTable />
+@if (isLoading)
+{
+    <LoaderGrow IsLoading="@isLoading" />
+}
+else if (!accounts.Any())
+{
+    <Alert Color="AlertColor.Light" class="mt-8 mx-3">
+        <Icon Name="IconName.ExclamationTriangleFill" class="me-2"></Icon>
+        Aucun Compte trouvé !
+    </Alert>
+}
+else
+{
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Comptes</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID
+                                        </th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Numéro de compte</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Détenteur</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Type de compte</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Devise</th>
+
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Statut de compte</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Date de création</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (AccountResponse account in accounts)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <p class="d-flex px-3 py-1">@account.Id</p>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@account?.AccountNumber</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">@account?.Client?.FirstName @account?.Client?.LastName</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">@account?.AccountType</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">@account?.Currency</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                <span class=@BoostrapClassFormatter.FormatAccountStatus(account!.Status)>@account?.Status</span>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    @account?.CreatedAt</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="btn btn-dark font-weight-bold text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    Mettre à jour
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<AccountResponse> accounts = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            accounts = await AccountService.GetAccountsAsync();
+            Logger.LogInformation($"Comptes chargés avec succès. {accounts}");
+
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning($"Erreur lors de chargement des comptes : {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

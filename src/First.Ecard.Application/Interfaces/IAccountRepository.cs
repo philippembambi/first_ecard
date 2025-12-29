@@ -10,5 +10,7 @@ namespace First.Ecard.Application.Interfaces
     {
         Task<Account?> GetByAccountNumberAsync(string accountNumber);
         Task<List<Account>> GetByClientIdAsync(int clientId);
+        Task<List<Account>> GetAllWithClientAsync(); 
+
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("First.Ecard.Presentation.UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9629ca128fc481eb4652c36686b39d2fa63aad71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea42da377e229eacc183163fb3fb7d67cf7edffd")]
 [assembly: System.Reflection.AssemblyProductAttribute("First.Ecard.Presentation.UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("First.Ecard.Presentation.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

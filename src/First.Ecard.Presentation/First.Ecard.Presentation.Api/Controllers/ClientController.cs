@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace First.Ecard.Presentation.Api.Controllers
 {
     [ApiController]
+    [IgnoreAntiforgeryToken]
     [Route("api/[controller]")]
     public class ClientController : ControllerBase
     {

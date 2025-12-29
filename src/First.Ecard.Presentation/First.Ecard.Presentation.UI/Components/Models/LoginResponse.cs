@@ -7,8 +7,8 @@ namespace First.Ecard.Presentation.UI.Components.Models
 {
     public class LoginResponse
     {
-        public string AccessToken {get;set;} = string.Empty;
-        public string FullName {get;set;} = string.Empty;
-        public string Role {get;set;} = string.Empty;
+        public string? AccessToken {get;set;}
+        public string? FullName {get;set;}
+        public string? Role {get;set;}
     }
 }

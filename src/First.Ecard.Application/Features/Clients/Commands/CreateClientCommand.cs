@@ -15,7 +15,6 @@ namespace First.Ecard.Application.Features.Clients.Commands
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public GenderType Gender { get; set; }
-        public int Age { get; set; }
         public DateOnly? DateOfBirth { get; set; }
         public string Nationality { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
