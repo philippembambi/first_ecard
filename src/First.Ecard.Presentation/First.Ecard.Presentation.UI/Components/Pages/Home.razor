@@ -1,8 +1,15 @@
 ﻿@using First.Ecard.Presentation.UI.Components.Shared
 @using Microsoft.AspNetCore.Authorization
+@using First.Ecard.Presentation.UI.Components.Models
+@using First.Ecard.Presentation.UI.Components.Services
+
 
 @page "/"
 @attribute [Authorize]
+@inject AccountService AccountService
+@inject ClientService ClientService
+@inject CardService CardService
+@inject ILogger<Home> Logger
 
 <PageTitle>FirstBank RDC</PageTitle>
 
@@ -53,13 +60,13 @@
       <div class="col-xl-7">
          <div class="row">
             <div class="col-md-4">
-               <ECard title="Total Comptes" Value="100" />
+               <ECard title="Clients" Value="@clients.Count.ToString()" />
             </div>
             <div class="col-md-4">
-               <ECard title="Total Cartes Virtuelles" Value="100" />
+               <ECard title="Comptes" Value="@accounts.Count.ToString()" />
             </div>
             <div class="col-md-4">
-               <ECard title="Total Transactions" Value="300" />
+               <ECard title="Cartes virtuelles" Value="@cards.Count.ToString()" />
             </div>
          </div>
       </div>
@@ -68,14 +75,14 @@
             <div class="card-header pb-0 p-3">
                <div class="row">
                   <div class="col-6 d-flex align-items-center">
-                     <a class="btn btn-dark mb-0" href="javascript:;"><i class="fas fa-plus"></i>&nbsp;&nbsp;Créer une
+                     <a class="btn btn-dark mb-0" href="/accounts/add"><i class="fas fa-plus"></i>&nbsp;&nbsp;Créer une
                         carte virtuelle</a>
                   </div>
 
                   <div class="col-6 text-end">
                      <h6 class="mb-0"></h6>
                   </div>
-                  
+
                </div>
             </div>
             <div class="card-body p-3">
@@ -111,17 +118,21 @@
             <div class="card-header pb-0 px-3">
                <h6 class="mb-0">Liste des cartes virtuelles</h6>
             </div>
+            @foreach (var card in cards)
+            { 
             <div class="card-body pt-4 p-3">
                <ul class="list-group">
                   <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                      <div class="d-flex flex-column">
-                        <h6 class="mb-3 text-sm">Oliver Liam</h6>
-                        <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Viking
-                              Burrito</span></span>
-                        <span class="mb-2 text-xs">Email Address: <span
-                              class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
-                        <span class="text-xs">VAT Number: <span
-                              class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                        <h6 class="mb-3 text-sm">@card.CardType</h6>
+                        <span class="mb-2 text-xs">Numéro de la carte : <span class="text-dark font-weight-bold ms-sm-2">@card.CardNumber</span></span>
+                        <span class="mb-2 text-xs">Numéro de compte :  <span
+                              class="text-dark ms-sm-2 font-weight-bold">@card.Account!.AccountNumber</span></span>
+                        <span class="mb-2 text-xs">CVV : <span
+                              class="text-dark ms-sm-2 font-weight-bold">@card.Cvv</span></span>
+                        <span class="mb-2 text-xs">Date d'expiration : <span
+                              class="text-dark ms-sm-2 font-weight-bold">@card.ExpiryDate</span></span>
+
                      </div>
                      <div class="ms-auto text-end">
                         <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
@@ -132,6 +143,7 @@
                   </li>
                </ul>
             </div>
+            }
          </div>
       </div>
       <div class="col-md-5 mt-4">
@@ -165,3 +177,28 @@
       </div>
    </div>
 </div>
+
+@code {
+   private List<AccountResponse> accounts = new();
+   private List<ClientResponse> clients = new();
+   private List<CardResponse> cards = new();
+   private bool isLoading = true;
+
+   protected override async Task OnInitializedAsync()
+   {
+      try
+      {
+         accounts = await AccountService.GetAccountsAsync();
+         clients = await ClientService.GetClientAsync();
+         cards = await CardService.GetCardsAsync();
+      }
+      catch (Exception ex)
+      {
+         Logger.LogWarning($"Erreur lors de chargement des comptes : {ex.Message}");
+      }
+      finally
+      {
+         isLoading = false;
+      }
+   }
+}

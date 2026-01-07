@@ -11,5 +11,6 @@ namespace First.Ecard.Application.Interfaces
         Task<List<Card>> GetCardsByAccountIdAsync(int accountId);
         Task<List<Card>> GetUpdateCardsAsync();
         Task<Card?> GetByCardNumberAsync(string cardNumber);
+        Task<List<Card>> GetAllWithAccountAsync();
     }
 }

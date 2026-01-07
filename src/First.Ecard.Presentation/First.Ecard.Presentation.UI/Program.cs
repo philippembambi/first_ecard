@@ -16,6 +16,7 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ClientService>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<BoostrapClassFormatter>();
+builder.Services.AddScoped<CardService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5134/api/")});
 builder.Services.AddLogging();
 builder.Services.AddBlazorBootstrap();

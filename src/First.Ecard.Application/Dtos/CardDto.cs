@@ -14,7 +14,7 @@ namespace First.Ecard.Application.Dtos
         public CardType CardType { get; set; }
         public string? CVV { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public int AccountId { get; set; }
+        public AccountSummary? Account { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

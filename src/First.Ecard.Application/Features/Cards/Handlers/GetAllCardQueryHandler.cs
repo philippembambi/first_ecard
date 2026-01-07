@@ -14,10 +14,10 @@ namespace First.Ecard.Application.Features.Cards.Handlers
 {
     public class GetAllCardQueryHandler : IRequestHandler<GetAllCardQuery, List<CardDto>>
     {
-        public readonly IGenericRepository<Card> _cardRepository;
+        public readonly ICardRepository _cardRepository;
         public readonly IMapper _mapper;
 
-        public GetAllCardQueryHandler(IGenericRepository<Card> cardRepository, IMapper mapper)
+        public GetAllCardQueryHandler(ICardRepository cardRepository, IMapper mapper)
         {
             _cardRepository = cardRepository;
             _mapper = mapper;
@@ -25,7 +25,7 @@ namespace First.Ecard.Application.Features.Cards.Handlers
 
         public async Task<List<CardDto>> Handle(GetAllCardQuery request, CancellationToken cancellationToken)
         {
-            var cards = await _cardRepository.GetAllAsync();
+            var cards = await _cardRepository.GetAllWithAccountAsync();
             return _mapper.Map<List<CardDto>>(cards);
         }
     }

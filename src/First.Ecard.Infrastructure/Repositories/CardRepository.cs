@@ -16,6 +16,13 @@ namespace First.Ecard.Infrastructure.Repositories
 
         }
 
+        public Task<List<Card>> GetAllWithAccountAsync()
+        {
+            return _context.Cards
+                .Include(c => c.Account)
+                .ToListAsync();
+        }
+
         public async Task<Card?> GetByCardNumberAsync(string cardNumber)
         {
             return await _context.Cards
